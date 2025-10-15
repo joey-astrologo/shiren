@@ -25,7 +25,7 @@ endtext
 
 ;fe47ec
 Text429:
-text "I'm a bug! report me.\l"
+text "\l"
 endtext
 
 ;fe4803
