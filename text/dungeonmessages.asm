@@ -332,11 +332,11 @@ endtext
 ;fe1691
 Text43:
 strvar $86
-text " stole from "
+text " stole "
 strvar $86
-text "!\l"
+text "'s "
 strvar $80
-text " was stolen!\l"
+text "!\l"
 endtext
 
 ;fe169f
