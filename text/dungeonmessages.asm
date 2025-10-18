@@ -334,7 +334,7 @@ Text43:
 strvar $86
 text " stole "
 strvar $86
-text "'s "
+text "'s\l"
 strvar $80
 text "!\l"
 endtext
