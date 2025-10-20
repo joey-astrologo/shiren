@@ -16,32 +16,16 @@ from TextPointerTable
 
 
 ChatGPT dexcription of solution
+Here’s what I traced through the minting pipeline:
 
-To fix the English names on the minting ranking boards, we must ensure that when func_C4B94F writes the default strings into SRAM, it loads English tile data rather than the original Japanese. The clean way is:
+When a board is minted the game jumps into func_C4B94F (code/bank_04.asm:16480). That routine streams text into SRAM by walking through the script referenced by TextPointerTable.
+Any byte ≥ $F0 is treated as a control code. The $FF terminator that closes each leaderboard entry hits the handler at func_C4BA53. Aeon Genesis patched that handler: note the jsl.l func_FE01DE block at code/bank_04.asm:16644.
+func_FE01DE lives in text.asm:2544. It takes the current text ID, subtracts $6007 (see func_FE01FF), and converts the result into an offset/DBR for the LeaderboardNames array. In other words, the handler no longer reads the raw Text1312…1333 blocks; it copies from LeaderboardNames instead.
+The issue is that LeaderboardNames (see text.asm:2433) is still ASCII-based padding—each entry is 16 single-byte codes with @ filler. When func_C4BA88 pulls those bytes, it only masks off the low 8 bits before writing to SRAM, so the values that end up in memory are the ASCII indices, not the 16‑bit tile IDs the renderer expects. With the font Tables the engine is using at mint time, the lower-byte pattern $20, $21, $22, … all map to the small kana family, which is why you’re seeing the repeated “ぃ”.
+So the current flow is: text ID → func_FE01DE → LeaderboardNames ASCII codes → $FF control terminator. No part of this path uses the Text1312 data we’ve been editing; the SRAM writer expects each name to already be encoded as 16‑bit tile values.
+The practical consequence is that we have two ways forward:
 
-In text/leaderboard.asm, replace each Text1312–Text1333 ASCII string with a .dw block of 16-bit tile codes (the same format the Japanese ROM used: eight words per name). This wraps each English name in the exact encoding the renderer expects.
+Keep the existing redirection (func_FE01DE) and replace each entry in LeaderboardNames with 16 tile words (or 16 bytes where each byte is the low glyph ID and the high byte already includes the $38xx tile base). That mirrors how the original Japanese ROM stored its defaults.
+Bypass LeaderboardNames entirely by undoing the func_FE01DE hook and making Text1312…1333 point at proper tile data. Then func_C4B94F can work like it did originally.
+Either route ends with the same requirement: the minting handler must see data that’s already in the game’s glyph format (a byte where the low 6 bits index the font and the high bits select the tile page), not simple ASCII indices. In the Japanese ROM those words looked like $38xx values; once we rebuild the English set to use that scheme the minting pipeline will copy correct defaults into SRAM.
 
-You can extract the tile values from your existing LeaderboardNames table (which already renders correctly) or manually translate the characters to their SNES tile IDs.
-
-Leave TextPointerTable untouched; it still produces the low 16-bit offsets for func_C4B94F, which now resolve to the new tile-coded English block.
-
-Rebuild and test: with those tile-coded strings in place, minting any board (even on a fresh SRAM) streams the proper English names into $7ECA66, so both Impasse and the later boards start with readable names immediately.
-
-No code changes are needed—the key point is supplying the data in the original 16-bit tile format so the existing pointer logic works for the English defaults.
-
-
-What the original game does
-When you “mint” a ranking board (e.g., the first time you die in a dungeon), the SNES code calls func_C4B94F (bank 04).
-That routine looks up a text ID in TextPointerTable, switches the data bank back to the original script bank, and streams 16-bit tile values straight into SRAM at $7ECA66.
-A second helper (func_C4BF88) immediately reads those 16-bit glyphs from SRAM to populate the on-screen list. In the Japanese ROM this chain is perfect because the table pointed to Japanese script blocks already stored in tile format.
-What the fan translation changed
-To display English strings elsewhere, the patchers rewrote the script files (text/leaderboard.asm) using ASCII. The onscreen code we see in func_C678AE uses an English table (LeaderboardNames) to render Impasse Valley correctly.
-However, when the game mints other boards, it still runs through the original func_C4B94F → TextPointerTable → Japanese bank pipeline. Since those entries were never re-encoded as tile data, the first-time board defaults come out as Japanese glyph codes (and look garbled on screen).
-Why the bug persists
-TextPointerTable in the translated project still contains the same 16-bit offsets as the Japanese ROM, and the helper routines still switch to the unmodified text bank.
-The English strings you see in text/leaderboard.asm live elsewhere in the ROM (and are ASCII, not tile-coded), so the minting code never touches them.
-As a result, SRAM keeps receiving the original tile data.
-Fixing it requires one of two approaches
-Rewrite the data. Replace the Text1312…Text1333 blocks with tile-encoded English strings (8 words per name, padded to match the SNES font). Once the table points to tile-formatted English data, func_C4B94F/func_C4BF88 work unmodified.
-Patch the minting path. Keep the ASCII strings but add a helper in func_C678AE that, right after func_C4B94F returns, copies the English tile data (e.g., from LeaderboardNames) into $7ECA66. That overwrites the Japanese defaults without changing the table.
-The key limitation is that the minting routines expect tile-formatted data; merely translating text/leaderboard.asm to ASCII doesn’t change what TextPointerTable points to.
