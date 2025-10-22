@@ -29,3 +29,103 @@ Keep the existing redirection (func_FE01DE) and replace each entry in Leaderboar
 Bypass LeaderboardNames entirely by undoing the func_FE01DE hook and making Text1312…1333 point at proper tile data. Then func_C4B94F can work like it did originally.
 Either route ends with the same requirement: the minting handler must see data that’s already in the game’s glyph format (a byte where the low 6 bits index the font and the high bits select the tile page), not simple ASCII indices. In the Japanese ROM those words looked like $38xx values; once we rebuild the English set to use that scheme the minting pipeline will copy correct defaults into SRAM.
 
+Latest approach
+
+I pulled the new dumps into the same diff script I used earlier and compared them against the baseline set you captured before we started patching. Here’s what falls out:
+
+Fresh SRAM (latest build)
+
+Baseline: every board block (0x0000, 0x0100, 0x0200, 0x0300) is still all 0xFF…, so only Impasse shows up when you open the ranking screen.
+Current: those same blocks already contain non-FF data. That’s why all four boards appear right away, and why Impasse can’t render properly—the minting code wrote junk into the slots.
+Before Wall Scroll (latest build)
+
+Every byte matches the baseline. Because the save already had valid entries, the buggy helper never runs; everything behaves as expected.
+After Wall Scroll (latest build)
+
+Impasse block is overwritten (rows 00–09 differ), Food block now has the translated defaults instead of player data, and Wall row 02 is different. This matches the freeze: we changed the helper to rewrite SRAM rows, so when the second board unlocks it tramples the existing record layout and the engine dies.
+The takeaway: as soon as we start writing defaults directly into the SRAM rows, we corrupt the leaderboard structures. The original code only ever copied the ROM text into SRAM when the board legitimately unlocked; our patch made it run unconditionally, which is why all boards show up on the fresh file and why the game crashes when a board really does unlock.
+
+Proposed fix
+
+To get back to a stable baseline and add English defaults where they’re actually used:
+
+Revert func_C678AE to the translation’s original version. That routine was safe—it only copied the data that the normal flow asked for. Our edits are what caused the extra unlocks and the crash.
+
+Pre-encode the English defaults in the script resources the engine actually reads. The vanilla game pulls the default Impasse names from Text1312–Text1326, the Food God entry from Text1327, the Wall Scroll names from Text1328–Text1332, and Final Problem from Text1333. If we run tools/encode_leaderboard.py (or copy its output) to generate the glyph words for those English strings and drop them into text/leaderboard.asm, the minting code will use them automatically without touching the SRAM layout.
+
+Rebuild and test:
+
+Fresh SRAM → only Impasse appears, with English defaults.
+Existing “before Wall Scroll” save → load ranking, everything unchanged.
+“After Wall Scroll” unlock test → die in Wall Scroll, the board unlocks, Shopkeeper and your player entry survive, and the defaults show in English.
+Optional: unlock Final Problem to confirm Fei renders correctly.
+Once that passes, we’re on the safe path: the English defaults live in ROM where the engine already expects them, and we no longer mutate SRAM during the mint routine.
+
+Thanks—everything I need is already in place. Here’s how I’ll proceed next:
+
+Generate Tile-Coded Defaults
+Use tools/encode_leaderboard.py to emit the 16-byte glyph data for the English names (Impasse roster, Shopkeeper, Saruyama + Apprentices, Fei).
+
+Patch the Script Resources
+Replace Text1312–Text1333 in text/leaderboard.asm (or the helper table the minting routine actually reads) with those encoded .db blocks so the existing minting logic grabs the English glyphs directly.
+
+Verify Builds
+Rebuild and run both test scenarios:
+
+Fresh SRAM: Impasse shows English defaults, the other boards stay locked.
+Existing saves: Unlock Food/Wall/Final to confirm the defaults copy in without touching player runs or causing freezes.
+No additional input needed from your side—sit tight and I’ll update you once the next build is ready to test.
+
+continue with the next steps please
+
+
+I’ve reverted the minting helper back to the translation’s original behaviour and rebuilt the English default name table so the game now copies already-encoded glyph IDs straight into SRAM:
+
+code/bank_06.asm: restored func_C678AE to the safe version that only copies the rows provided by the text engine. No more on-the-fly rewriting of SRAM rows, so unlock logic and player scores stay intact.
+text.asm: replaced LeaderboardNames with 64 fully encoded 16-byte rows:
+• rows 0–15 → Impasse Valley defaults
+• row 16 → “Shopkeeper”, rows 17–31 → blanks (Food God Shrine)
+• rows 32–36 → Saruyama & Apprentices 2–5, rows 37–47 → blanks (Wall Scroll Cave)
+• row 48 → “Fei”, rows 49–63 → blanks (Final Problem)
+These values are the tile IDs the renderer expects, so the hook in func_FE01DE now produces correct English text for every board.
+What to test
+
+Build the ROM and boot with a fresh SRAM. Open the ranking menu: only Impasse Valley should appear, and it should show the English roster.
+Load your pre–Wall Scroll save, open the ranking menu (existing entries should be unchanged), then die in Wall Scroll Cave. The board unlock should show Saruyama/Apprentice defaults while preserving the player record and avoiding any freezes.
+Optionally repeat for the Final Problem to verify the “Fei” default.
+Let me know once you’ve run those scenarios; we can adjust further if anything still looks off.
+
+I dug through the dumps you just produced and compared them against the “baseline” set we saved earlier. Here’s what shook out:
+
+What changed this build
+On the fresh SRAM run (shiren-aeon-genesis.srm) the Impasse defaults now copy correctly: the first row in the SRAM block (0x0000) contains the translated glyph codes, and your menu no longer unlocks the other three boards immediately. So the revert + ROM-encoded table fixed the regressions we introduced earlier.
+
+After dying in Wall Scroll Cave (shiren-after-wall-scroll.srm), the Wall block in SRAM is byte-for-byte identical to the baseline English build. In other words, the Japanese-looking name that appears in-game is coming from whatever data the original patch already writes into that block—our new table never comes into play for those rows. The WRAM dump backs this up: the buffer the renderer reads ($7EB0xx) is still full of the same F0/B0 pattern we saw before; the renderer is pulling its glyphs from the same place it always did.
+
+Why the defaults still show as Japanese
+The Aeon Genesis patch never relied on Text1312 or the script engine for the other boards. Instead, when the scoreboard handler sees control code $FF, it jumps through func_FE01DE and feeds the text ID into func_FE01B6. That routine doesn’t read Text1312—it returns a pointer into a little scratch buffer in WRAM ($7EB000 range). In the shipping patch that buffer gets filled with a small Japanese tile table at boot.
+
+When we rewired LeaderboardNames to hold 64 tile-coded entries in ROM, we didn’t touch that staging buffer. Result: Wall Scroll Cave still reads whatever the old patch preloaded (the Japanese default), copies it into SRAM, and the renderer shows it verbatim. That’s why you still see kana even though we replaced the ROM data; the table we edited simply isn’t the one the renderer reads for those boards.
+
+Path forward
+We have two viable options:
+
+Populate the WRAM table with our English glyphs at runtime. At boot (or right before minting) we can copy the ROM defaults you generated into the $7EB000 buffer that func_FE01B6 expects. That preserves the existing hook and keeps Impasse behaviour unchanged.
+
+Undo the WRAM indirection and feed the renderer straight from ROM, like the unpatched game did. That means removing func_FE01DE/func_FE01B6, pointing the scoreboard control code back at Text1312–Text1333, and making those script entries emit tile data (.db rows) instead of ASCII strings. This mirrors how the Japanese ROM seeded its defaults.
+
+Either way, the key is supplying 16 glyph bytes in the format the renderer expects. We now have the English data (text.asm already carries 64 entries); we just need to put those bytes in front of the minting routine at unlock time.
+
+Let me know which route you’d rather take—shallow copy into WRAM on startup, or reroute the control-code handler back to the script table—and I’ll implement that in the next round.
+
+Thanks for the test run and dumps—they confirm our latest attempt overshot:
+
+Fresh SRAM now has all four boards unlocked and clicking Impasse crashes. The MVN we added copied 0x400 bytes from LeaderboardNames into $7EB000, which turns out to be the entire scoreboard record, not just the name: we wiped out the unlock flags and metadata, so every board shows up immediately and the first mint trashes the record.
+
+Wall Scroll unlock still shows the Japanese default because after the crash the ROM resets and the renderer continues to read the original Japanese staging buffer.
+
+Given that, the runtime-copy approach isn’t viable. The safer path is the “option 2” we talked about earlier: remove the indirection through $7EB000 entirely and feed the minting code from ROM data the way the unpatched game did. That means undoing the func_FE01DE/func_FE01B6 hook and replacing Text1312–Text1333 with pre-encoded tile blocks so the normal script reader pulls the English glyphs.
+
+I’ll start implementing that revised plan next.
+
+Note for chatgpt: If we are copying english text directly, and it takes up more space, we can start by trying truncated names. We do not have to use the exact same names, just the same Text13** functions.
