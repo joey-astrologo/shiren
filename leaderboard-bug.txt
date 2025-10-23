@@ -69,3 +69,84 @@ file in baseline:
 shiren-aeon-genesis-* files are the baseline fresh new srm
 shiren-before-wall-scroll-* are for before the wall scroll cave is unlocked/minted
 shiren-after-wall-scroll-* are for after the ranking board is minted from dying in the dungeon for the first time
+
+Do note that impasse valley, the default board is slightly different from the others.
+The other 3 boards are only available once you first die in the dungeon. This should not be changed
+
+
+chatgpt
+
+Root Cause
+
+The detoured path mints default rows from a ROM table, not from Text1312–Text1333. Only Impasse Valley has an English default table. Other boards use non‑English (original) defaults.
+Evidence:
+Default table present only for Impasse: text.asm:2433 (LeaderboardNames) has 16 rows (Impasse).
+Staging loop always reads from that single table: code/bank_06.asm:8700 loads LeaderboardNames,x.
+Board/row addressing: text.asm:2544 (func_FE01B6) maps IDs to WRAM blocks B000/B100/B200 and row offsets, and code/bank_04.asm:16644 hooks $FF to func_FE01DE to copy 16 bytes from WRAM into SRAM.
+Fix Plan
+
+Add per‑board default tables
+Add three 16×16 tables: Food God Shrine, Wall Scroll Cave, Final Problem under text.asm near LeaderboardNames (keep names ≤16 bytes, pad with @).
+Optionally, combine into one contiguous table of 48 rows (Impasse 0x000..0x0FF, Food 0x100..0x1FF, Wall/Final 0x200..0x2FF) to simplify indexing.
+Select table by board when staging
+In code/bank_06.asm:8640–8760 (loop around func_C678AE), after jsl func_FE01B6 (which returns X = #$B000/#$B100/#$B200 and A = row*16):
+Preserve the returned X (e.g., stx wTemp06).
+Compute X = row_index*16 (already done).
+Add board offset to X: +0x000 if wTemp06 == #$B000, +0x100 if #\$B100, +0x200 if #\$B200.
+Keep the single ROM symbol (one 48‑row table) and continue lda.l LeaderboardNames,x unchanged, or switch to per‑board labels if preferred.
+Keep the $FF detour unchanged
+text.asm:2569 (func_FE01DE) already maps IDs to WRAM B000/B100/B200 and copies 16 bytes; once staging has the correct English defaults for all boards, the stream will mint English names.
+Use short debug names to validate indexing
+Fill the new tables with easily identifiable short rows (e.g., IV01..IV16, FG01..FG16, WS01..WS16 / FP01..FP16) to avoid overflow and make mis‑indexing obvious.
+Verification
+
+Build and reproduce unlock/mint for each board.
+Use the tools in tools/ to inspect WRAM:
+Check 7E:B000/B100/B200 contain the expected 16×16 rows after visiting each board’s screen.
+Compare with baselines:
+baseline dumps/shiren-before-wall-scroll-* vs shiren-after-wall-scroll-* to confirm mint writes only at the expected time.
+Check text stream behavior in trace.log:
+Confirm the $FF path hits func_FE01DE and copies exactly 16 bytes then 0xFFFF terminator.
+Notes
+
+If needed, a minimal fallback is to gate the detour: use the centralized table only for Impasse and fall back to the script for other IDs. This is simpler but leaves mixed logic. The above plan unifies behavior across boards.
+Key edit points:
+text.asm:2433 (add/expand default tables)
+code/bank_06.asm:8700 (add board offset before lda.l LeaderboardNames,x)
+No change expected to code/bank_04.asm:16644 (jsl func_FE01DE)
+Want me to implement the table(s) and the small offset logic in bank_06.asm, with short debug names first, then we can verify with the provided baseline dumps/tools?
+
+Do note that impasse valley, the default board is slightly different from the others.
+The other 3 boards are only available once you first die in the dungeon. This should not be changed. Does this change the plan?
+
+
+Short answer: it doesn’t change the core plan. We can fix the names without touching unlock timing.
+
+What I’ll keep unchanged
+
+No changes to unlock flow: Other three boards still mint only after first death.
+No changes to the text engine hook (func_FE01DE) or when minting occurs.
+What I’ll adjust in the plan
+
+Add default-name data for all boards:
+Provide three additional 16×16 blocks (Food God, Wall Scroll, Final) with short debug names (e.g., FG01.., WS01.., FP01..) to stay within 16 bytes and make indexing obvious.
+Store them contiguously after the existing Impasse block, keeping the label LeaderboardNames as the base.
+Select the right block at staging time:
+In code/bank_06.asm inside the staging loop (func_C678AE near the lda.l LeaderboardNames,x), add an offset to x based on the destination WRAM block chosen by func_FE01B6:
++0x000 if B000 (Impasse),
++0x100 if B100 (Food God),
++0x200 if B200 (Wall/Final).
+Then continue the existing 16-byte copy as before.
+Verify with baselines and tools:
+Confirm the other three boards remain absent before first death.
+After first death, verify each board mints with English defaults in 7E:B100/B200.
+Inspect trace.log to confirm the $FF detour is still hit only during mint and the copy stays at 16 bytes.
+Safer alternative (if you prefer minimal change)
+
+Special-case only Impasse for the detour and fall back to script streaming for the other IDs. This also preserves unlock timing, but relies on script entries being properly encoded and sized. The table approach above keeps behavior consistent with english-fixes and avoids script-encoding pitfalls.
+If you’re good with the table approach, I’ll implement the 3 new blocks and the small index offset in bank_06.asm, using short debug names for validation.
+
+
+
+
+
