@@ -7756,7 +7756,8 @@ func_C66FD4:
 func_C67008:
 	lda.b #$00
 	sta.l $7ED653
-	jsl.l func_C678F1 ;modified
+	;jsl.l func_C678F1 ;modified
+	lda.l $7ED652
 	sta.b wTemp02
 	phy
 	txy
@@ -8667,6 +8668,8 @@ func_C67821:
 	ldx.w #$0000
 	ldy.w #$000F
 
+; seems critical to name and possibly table rendering
+; for ranking
 func_C678AE:
 	pla
 	sta.b wTemp00
@@ -8676,46 +8679,35 @@ func_C678AE:
 	call_savebank func_C4B94F
 	ply
 	plx
-	;start of modified code
-	php
+	lda.w #$EB86
+	sta.b wTemp02
 	phx
 	phy
-	lda.b wTemp00
-	pha
-	txa
-	jsl.l func_FE0203
-	pha 
-	jsl.l func_FE01B6
-	stx.b wTemp01
-	sta.b wTemp00
-	pla
-	;a *= 16
-	asl a
-	asl a
-	asl a
-	asl a
-	tax
-	ldy.w #$0000
-@lbl_C678D9:
-	lda.l LeaderboardNames,x
-	sta.b [wTemp00],y
-	iny
-	iny
-	inx
-	inx
-	cpy.w #$0010
-	bne @lbl_C678D9
-	pla
-	sta.b wTemp00
+	jsl.l func_C4BF88
 	ply
 	plx
-	plp
-	jmp.w func_C678F1@lbl_C6792C
+	lda.b wTemp02
+	cmp.w #$FFFF
+	beq func_C678F1@lbl_C6792C
+	sep #$20 ;A->8
+	sta.l $B36007,x
+	rep #$20 ;A->16
+	lda.w #$EB86
+	sta.b wTemp02
+	phx
+	phy
+	jsl.l func_C4BF88
+	ply
+	plx
+	lda.b wTemp02
+	cmp.w #$FFFF
+	beq func_C678F1@lbl_C6792C
+	sep #$20 ;A->8
+	sta.l $B36008,x
+	rep #$20 ;A->16
 func_C678F1:
-	lda.w #$3808
-	sbc.l $7ED651
-	rtl 
-	;end of modified code
+	lda.w #$EB86
+	sta.b wTemp02
 	phx
 	phy
 	jsl.l func_C4BF88

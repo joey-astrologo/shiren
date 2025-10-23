@@ -7395,6 +7395,7 @@ DATA8_C46AE6:
 	.db $FE
 
 ;modified pointers
+;seems to be for opening cutscene
 DATA8_C46AF3:
 	.dw Data_c4c600
 	.dw Data_c4c630
@@ -7475,7 +7476,7 @@ func_C46CAC:
 	stx.b wTemp01
 	pla
 	sta.b wTemp00
-	jsl.l func_FA8D80 ;modified
+	jsl.l func_FA8D80 ;modified (copyright?)
 	ldy.w #$0001
 	bra @lbl_C46D03
 @lbl_C46CEA:
@@ -7510,7 +7511,7 @@ func_C46D0F:
 	plx
 	stx.b wTemp04
 	phy
-	jsl.l func_FA8D00 ;modified
+	jsl.l func_FA8D00 ;modified (copyright?)
 	jsl.l func_808784
 	ply
 	sty.b wTemp00
@@ -12207,6 +12208,7 @@ func_C4923F:
 	bra @lbl_C49254
 	;end of modified code
 	.db $00 ;remnant of cpy.w #$0005
+	;cpy.w #$0005
 	bne @lbl_C49254
 	cpx.w #$0009
 	bcs func_C49285
@@ -12235,6 +12237,7 @@ func_C49277:
 	lda.w #$0040
 	sta.b wTemp00
 	call_savebank func_818049
+; modified (not sure why)
 func_C49280:
 	jmp.w func_C4911A
 
@@ -16443,7 +16446,6 @@ func_C4B918:
 	pla
 	rts
 
-
 Data_c4b91a:
 	.db $10,$B9
 	.db $09,$B9
@@ -16640,9 +16642,12 @@ func_C4BA53:
 	.db $20,$76,$BF,$A6,$D4,$20,$DA,$BE   ;C4BA74  
 	.db $4C,$CD,$B9                       ;C4BA7C
 
+	jsr.w func_C4BF66 ; comment out these two lines if the modified code is used
+	ldx.b w00d4
+	; this change makes the names blank
 	;start of modified code
-	jsl.l func_FE01DE
-	nop
+	;jsl.l func_FE01DE
+	;nop
 	;end of modified code
 	phy
 	ldy.w #$0000
@@ -16949,7 +16954,7 @@ DATA8_C4BD14:
 	and.w #$00FF
 	cmp.w #$00DB
 	beq @lbl_C4BD59
-	jsl.l func_C49285 ;modified
+	jsl.l func_C49285 ;modified (required for player name on save file)
 	ldy.w #$0000
 @lbl_C4BD3D:
 	lda.b [$00],y ;modified
@@ -17478,9 +17483,14 @@ func_C4C0CC:
 	plp
 	rtl
 
+;c4c0e0
+;$00-01: text id (16 bit)
+;$02-03: text to compare address (lower 16 bits)
+;$04: text to compare address bank
 func_C4C0E0:
 	php
 	sep #$20 ;A->8
+	;Switch to the bank of text to compare
 	lda.b wTemp04
 	pha
 	plb
@@ -17491,6 +17501,7 @@ func_C4C0E0:
 	lda.l TextPointerTable,x
 	sta.b w00d6
 	lda.b wTemp00
+	;Check whether the text is in bank fe or ff
 	ldx.w #$0000
 	ldy.w #$00FE
 	cmp.l Data_ff1075,x
@@ -17536,6 +17547,9 @@ func_C4C0E0:
 	;start of modified code
 	jmp.l func_C492C6
 	;end of modified code
+@lbl_C4C143:
+	inx
+	bra @lbl_C4C10F
 @lbl_C4C146:
 	iny
 	bra @lbl_C4C126
