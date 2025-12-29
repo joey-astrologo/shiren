@@ -3016,9 +3016,8 @@ func_C62D0F:
 	clc
 	adc.w #$0028
 	sta.l $7ED60F
-	jmp.l func_FE0100 ;added
-	.db $1E ;remnant of beq @lbl_C630C1
-func_C630A3:
+	cpy.w #$0032
+	beq @lbl_C630C1
 	lda.b wTemp00
 	clc
 	adc.w #$6006
@@ -3033,9 +3032,8 @@ func_C630A3:
 	adc.w #$07A8
 	sec
 	sbc.l $7ED60D
-	rtl ;added
-	.db $B3,$B3 ;remnant of mvp $B3,$B3
-func_C630C1:
+	mvp $B3,$B3
+@lbl_C630C1:
 	sep #$20 ;A->8
 	ldx.b wTemp00
 	lda.l $B36006,x
