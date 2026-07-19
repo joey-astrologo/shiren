@@ -2429,3 +2429,192 @@ TextPointerTable:
 Data_ff1075:
 .dw 1880
 .dw $FFFF
+
+;==============================================================
+;Extended leaderboard names
+;
+;Per-board extension tables in proven-free SRAM (the tails AG's
+;hack already used, plus the bank $B3 tail):
+;  board 0 Impasse Valley:   $B0:7EF0-7F85
+;  board 1 Food God Shrine:  $B1:7EF0-7F85
+;  board 2 Wall Scroll Cave: $B2:7EF0-7F85
+;  board 3 Final Problem:    $B3:7F53-7FE8
+;50 slots x 3 bytes per board: [char5][char6][flag]
+;  flag $FF        = legacy entry, stock 4-char display
+;  flag $00        = player entry, chars 5-6 valid ($FF = unused)
+;  flag $80+n      = default entry, render LeaderboardDefaultNames #n
+;  anything else   = garbage (uninitialized SRAM), treated as legacy
+;Staging buffer for player names: $B3:7FF0-7FF6 (free B3 tail)
+;The 40-byte entries in bank $B3 (4-char name, score, stats) are
+;never touched, so scoring/sorting behavior is unchanged.
+
+LeaderboardDefaultNames:
+text "Shijima@@@@@@@@@"
+text "Heiji@@@@@@@@@@@"
+text "Obito@@@@@@@@@@@"
+text "Tsubute@@@@@@@@@"
+text "Kazura@@@@@@@@@@"
+text "Mugura@@@@@@@@@@"
+text "Tsumuri@@@@@@@@@"
+text "Kanji@@@@@@@@@@@"
+text "Jirokichi@@@@@@@"
+text "Senzo@@@@@@@@@@@"
+text "Hanzaki@@@@@@@@@"
+text "Sabu@@@@@@@@@@@@"
+text "Kanpachi@@@@@@@@"
+text "Tage@@@@@@@@@@@@"
+text "Yamake@@@@@@@@@@"
+text "Shopkeeper@@@@@@"
+text "Saruyama@@@@@@@@"
+text "Apprentice 2@@@@"
+text "Apprentice 3@@@@"
+text "Apprentice 4@@@@"
+text "Apprentice 5@@@@"
+text "Fei@@@@@@@@@@@@@"
+
+;Per-board extension table locations (indexed by board*2).
+;Bank is kept in the high byte so a single 16-bit store places it
+;in the pointer's bank position.
+LbExtBoardBase:
+.dw $7EF0,$7EF0,$7EF0,$7F53
+LbExtBoardBankW:
+.dw $B000,$B100,$B200,$B300
+
+;Replaces the func_C4BF66 call in the bank_04 print-string-at-pointer
+;text command (the same hook site the AG hack used). Reads the 3-byte
+;string pointer from the DP parameter list exactly like func_C4BF66;
+;if it points at a ranking name in bank $B3, redirects the pointer to
+;the extended name (staging buffer or ROM default) and raises the
+;length limit. Any other pointer passes through with stock behavior.
+;Entry: 16-bit A/X/Y, Y = text stream offset (preserved)
+;Exit:  wTemp02-04 = string pointer (lo/hi/bank), wTemp00 = length
+;       limit (only when redirected), params consumed, X = $D4
+func_LbExtName:
+	php
+	rep #$30 ;AXY->16
+	phy
+	;replicate func_C4BF66: pull 3-byte pointer from param list
+	ldx.b $DD
+	lda.b $DF,x
+	sta.b wTemp02
+	lda.b $E0,x
+	sta.b wTemp03
+	inx
+	inx
+	inx
+	stx.b $DD
+	;only remap pointers into the bank $B3 ranking area
+	sep #$20 ;A->8
+	lda.b wTemp04    ;pointer bank byte
+	cmp.b #$B3
+	bne @passthru
+	rep #$20 ;A->16
+	lda.b wTemp02
+	sec
+	sbc.w #$6007
+	bcc @passthru
+	cmp.w #$1F44     ;past last board's entries?
+	bcc @inrange
+@passthru:
+	jmp.w @done
+@inrange:
+	;A = offset within rankings; board = A / $7D1, then slot = rem / $28
+	ldx.w #$0000
+@boardloop:
+	cmp.w #$07D1
+	bcc @haveboard
+	sbc.w #$07D1
+	inx
+	bra @boardloop
+@haveboard:
+	sta.l $004204    ;dividend = offset within board
+	sep #$20 ;A->8
+	lda.b #$28
+	sta.l $004206    ;divisor = entry size
+	rep #$20 ;A->16
+	;build ext-table pointer at wTemp05-07 while the divider runs
+	;(these loads/stores exceed the 16-cycle divide latency)
+	txa
+	asl a
+	tax              ;X = board*2
+	lda.l LbExtBoardBankW,x
+	sta.b wTemp06    ;places bank byte at pointer+2
+	lda.l LbExtBoardBase,x
+	sta.b wTemp05    ;overwrites pointer+1 with real addr high byte
+	lda.l $004214    ;quotient = slot (0-49)
+	pha
+	asl a
+	adc.b 1,s        ;A = slot*3 (asl left carry clear)
+	adc.b wTemp05    ;A = table base + slot*3
+	sta.b wTemp05
+	pla              ;discard saved slot
+	;read the entry's flag byte
+	sep #$20 ;A->8
+	ldy.w #$0002
+	lda.b [wTemp05],y
+	beq @player
+	cmp.b #$80
+	bcc @done        ;garbage flag -> legacy display
+	cmp.b #$96
+	bcs @done        ;garbage or $FF -> legacy display
+	;default entry: point at the full ROM name, length 16
+	and.b #$1F
+	rep #$20 ;A->16
+	and.w #$00FF
+	asl a
+	asl a
+	asl a
+	asl a
+	adc.w #loword(LeaderboardDefaultNames)
+	sta.b wTemp02
+	sep #$20 ;A->8
+	lda.b #:LeaderboardDefaultNames
+	sta.b wTemp04
+	bra @setlen
+;player entry: staging = 4 chars from the $B3 entry + ext chars + $FF
+@player:
+	ldy.w #$0000
+	lda.b [wTemp05],y
+	sta.l $B37FF4    ;char 5
+	iny
+	lda.b [wTemp05],y
+	sta.l $B37FF5    ;char 6
+	ldx.b wTemp02    ;X = entry name address
+	lda.l $B30000,x
+	sta.l $B37FF0
+	lda.l $B30001,x
+	sta.l $B37FF1
+	lda.l $B30002,x
+	sta.l $B37FF2
+	lda.l $B30003,x
+	sta.l $B37FF3
+	lda.b #$FF
+	sta.l $B37FF6    ;terminator
+	rep #$20 ;A->16
+	lda.w #$7FF0
+	sta.b wTemp02
+	sep #$20 ;A->8
+	lda.b #$B3
+	sta.b wTemp04
+@setlen:
+	rep #$20 ;A->16
+	lda.w #$0010
+	sta.b wTemp00
+@done:
+	rep #$30 ;AXY->16
+	ply
+	plp
+	ldx.b $D4
+	rtl
+
+;Glyph-shift fix for the ranking-screen compositor (bank_06 func_C67008).
+;Stock code shifts glyph rows by the character's width ($7ED652), which is
+;only correct for full-width glyphs; proportional English glyphs must shift
+;by the remaining pixels in the current tile cell (8 - pen offset). This is
+;the AG hack's fix (their bytes A9 08 38: lda #$08 / sec), restored.
+;Entry/exit: 8-bit A. Replaces: lda.l $7ED652 (4 bytes -> jsl, 4 bytes)
+func_LbGlyphShift:
+	lda.b #$08
+	sec
+	sbc.l $7ED651
+	rtl

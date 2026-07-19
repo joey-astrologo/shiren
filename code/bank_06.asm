@@ -7754,8 +7754,10 @@ func_C66FD4:
 func_C67008:
 	lda.b #$00
 	sta.l $7ED653
-	;jsl.l func_C678F1 ;modified
-	lda.l $7ED652
+	;start of modified code (VWF glyph shift fix, see text.asm)
+	;replaces: lda.l $7ED652 (4 bytes)
+	jsl.l func_LbGlyphShift
+	;end of modified code
 	sta.b wTemp02
 	phy
 	txy

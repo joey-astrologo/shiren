@@ -16642,12 +16642,10 @@ func_C4BA53:
 	.db $20,$76,$BF,$A6,$D4,$20,$DA,$BE   ;C4BA74  
 	.db $4C,$CD,$B9                       ;C4BA7C
 
-	jsr.w func_C4BF66 ; comment out these two lines if the modified code is used
-	ldx.b w00d4
-	; this change makes the names blank
-	;start of modified code
-	;jsl.l func_FE01DE
-	;nop
+	;start of modified code (extended leaderboard names, see text.asm)
+	;replaces: jsr.w func_C4BF66 / ldx.b w00d4 (5 bytes)
+	jsl.l func_LbExtName
+	nop
 	;end of modified code
 	phy
 	ldy.w #$0000
