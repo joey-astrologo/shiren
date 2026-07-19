@@ -2906,6 +2906,71 @@ func_LbExtInsert:
 @normdone:
 	rts
 
+;Subtitle/detail line clipping. The ranking screens render variable
+;strings (death causes like "<enemy> whupped him good.", equipment
+;names) through the shared pop-and-render loop in bank_06 func_C66D6B,
+;with no length limit - long strings run off the window edge. These two
+;hooks cap a string at 27 glyphs: when the 27th character is popped and
+;more remain, "..." and a terminator are injected into the character
+;queue at $7E:CA66 ahead of the read cursor (a descending ring, wrap at
+;$07FE), so the ellipsis flows through the normal glyph pipeline.
+;$B3:7FF7 = per-string glyph counter, zeroed at each string start.
+
+;Replaces func_C4B94F inside the call_savebank at func_C66D6B's entry.
+func_LbSubStart:
+	pha
+	php
+	sep #$20 ;A->8
+	lda.b #$00
+	sta.l $B37FF7
+	plp
+	pla
+	jml.l func_C4B94F
+
+;Replaces the jsl func_C4BF88 in func_C66D6B's render loop.
+func_LbPopClip:
+	jsl.l func_C4BF88
+	php
+	rep #$30 ;AXY->16
+	lda.b wTemp02
+	cmp.w #$FFFF
+	beq @strend
+	sep #$20 ;A->8
+	lda.l $B37FF7
+	inc a
+	sta.l $B37FF7
+	cmp.b #$1B       ;27th glyph and more to come -> clip
+	bcc @pass
+	bne @pass        ;28+ are the injected dots passing through
+	rep #$20 ;A->16
+	ldx.b wTemp00    ;next queue read position
+	lda.w #$004C     ;'.'
+	sta.l $7ECA66,x
+	jsr.w @qdec
+	sta.l $7ECA66,x
+	jsr.w @qdec
+	sta.l $7ECA66,x
+	jsr.w @qdec
+	lda.w #$FFFF
+	sta.l $7ECA66,x  ;terminator ends the string after the dots
+@pass:
+	plp
+	rtl
+@strend:
+	sep #$20 ;A->8
+	lda.b #$00
+	sta.l $B37FF7
+	plp
+	rtl
+;step the queue index down two with the ring's wraparound
+@qdec:
+	dex
+	dex
+	bpl @qdecdone
+	ldx.w #$07FE
+@qdecdone:
+	rts
+
 ;Hooked into the tail of the stock ranking init (func_C67821): performs
 ;the two replaced instructions (final byte of the HISCORE marker), then
 ;clears the extension-table marker so the next ranking view rebuilds the

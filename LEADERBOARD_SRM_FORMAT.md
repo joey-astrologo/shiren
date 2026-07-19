@@ -54,6 +54,9 @@ Code map (all new code at the end of text.asm, bank $FF):
 - `func_LbGlyphShift` — VWF compositor shift fix (bank_06 func_C67008)
 - `func_LbExtInit` / `func_LbExtSaveInit` — lazy init + wipe invalidation
 - `func_LbExtInsert` — insert hook (bank_06 func_C630A3/func_C630C1)
+- `func_LbSubStart` / `func_LbPopClip` — 27-glyph clip with "..." for
+  variable strings (death causes, equipment) on the board/detail screens
+  (bank_06 func_C66D6B loop; counter at $B3:7FF7)
 
 Display limit: the ranking rows fit ~9 characters, hence the shortened
 default names. Player names cap at 6 (game-wide name length).

@@ -7561,7 +7561,9 @@ func_C66D6B:
 	lda.l $7ED660
 	sta.b wTemp02
 @lbl_C66D8B:
-	call_savebank func_C4B94F
+	;start of modified code (string clipping, see text.asm)
+	call_savebank func_LbSubStart
+	;end of modified code
 	sep #$20 ;A->8
 	bankswitch 0x7F
 @lbl_C66D97:
@@ -7570,7 +7572,9 @@ func_C66D6B:
 	sta.b w7f0002
 	lda.b w7f0006
 	pha
-	jsl.l func_C4BF88
+	;start of modified code (string clipping, see text.asm)
+	jsl.l func_LbPopClip
+	;end of modified code
 	pla
 	sta.b w7f0006
 	lda.b w7f0002
