@@ -3016,8 +3016,13 @@ func_C62D0F:
 	clc
 	adc.w #$0028
 	sta.l $7ED60F
-	cpy.w #$0032
-	beq @lbl_C630C1
+	;start of modified code (extension-table insert sync, see text.asm)
+	;replaces: cpy.w #$0032 / beq @lbl_C630C1 (5 bytes); the hook re-does
+	;that check and returns to func_C630A3 (shift) or func_C630C1 (no shift)
+	jml.l func_LbExtInsert
+	nop
+	;end of modified code
+func_C630A3:
 	lda.b wTemp00
 	clc
 	adc.w #$6006
@@ -3033,7 +3038,7 @@ func_C62D0F:
 	sec
 	sbc.l $7ED60D
 	mvp $B3,$B3
-@lbl_C630C1:
+func_C630C1:
 	sep #$20 ;A->8
 	ldx.b wTemp00
 	lda.l $B36006,x

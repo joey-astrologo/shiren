@@ -2785,6 +2785,127 @@ func_LbExtInit:
 	plp
 	rts
 
+;Insert-sync hook. Replaces the "cpy #$0032 / beq" pair in the ranking
+;insert routine (bank_06, now labeled func_C630A3/func_C630C1). Runs when
+;a new entry is about to be inserted: wTemp00 = board offset (0/$7D1/
+;$FA2/$1773), Y = insertion rank (1-based), [$B2] = active journal's
+;save block (player name at +4, so chars 5-6 at +8/+9). Shifts the
+;board's extension slots down in lockstep with the entry shift, then
+;writes the new slot as a player entry. Initializes the tables first if
+;the marker is absent (e.g. dying on a pre-extension save before ever
+;viewing a ranking). A/X/Y are dead across the hook site (both stock
+;continuations reload them); DP scratch is preserved.
+func_LbExtInsert:
+	php
+	rep #$30 ;AXY->16
+	lda.b $05
+	pha
+	lda.b $07
+	pha
+	lda.b $09
+	pha
+	lda.b $0B
+	pha
+	lda.b $0D
+	pha
+	phy              ;insertion rank
+	;ensure tables match the pre-insert board state
+	sep #$20 ;A->8
+	lda.l $B37FEA
+	cmp.b #$4C
+	beq @ready
+	jsr.w func_LbExtInit
+@ready:
+	rep #$20 ;A->16
+	;board*2 -> X from the board offset in wTemp00
+	lda.b wTemp00
+	ldx.w #$0000
+@bloop:
+	cmp.w #$07D1
+	bcc @bdone
+	sbc.w #$07D1
+	inx
+	inx
+	bra @bloop
+@bdone:
+	;table pointer -> wTemp05-07, table+3 pointer -> $08-0A
+	lda.l LbExtBoardBankW,x
+	sta.b wTemp06
+	sta.b $09
+	lda.l LbExtBoardBase,x
+	sta.b wTemp05
+	clc
+	adc.w #$0003
+	sta.b $08
+	;slot*3 -> $0B (slot = rank-1)
+	lda.b 1,s
+	dec a
+	sta.b $0B
+	asl a
+	adc.b $0B
+	sta.b $0B
+	;shift slots [slot..48] down one (backwards, in lockstep with the
+	;entry mvp); nothing to move when inserting at the last slot
+	cmp.w #$0093
+	bcs @noshift
+	ldy.w #$0092     ;last source byte: slot 48's flag
+	sep #$20 ;A->8
+@shift:
+	lda.b [wTemp05],y
+	sta.b [$08],y
+	cpy.b $0B
+	beq @shiftdone
+	dey
+	bra @shift
+@shiftdone:
+	rep #$20 ;A->16
+@noshift:
+	;write the new slot: [char5][char6][$00] from the save-block name
+	sep #$20 ;A->8
+	ldy.w #$0008
+	lda.b [$B2],y
+	jsr.w @norm
+	sta.b $0D        ;char 5
+	iny
+	lda.b [$B2],y
+	jsr.w @norm
+	xba              ;char 6 -> B
+	ldy.b $0B
+	lda.b $0D
+	sta.b [wTemp05],y
+	iny
+	xba
+	sta.b [wTemp05],y
+	iny
+	lda.b #$00
+	sta.b [wTemp05],y ;player flag
+	;restore and re-enter the stock routine
+	rep #$30 ;AXY->16
+	ply              ;rank
+	pla
+	sta.b $0D
+	pla
+	sta.b $0B
+	pla
+	sta.b $09
+	pla
+	sta.b $07
+	pla
+	sta.b $05
+	plp
+	cpy.w #$0032
+	beq @noentryshift
+	jml.l func_C630A3
+@noentryshift:
+	jml.l func_C630C1
+;name padding bytes (space $00) end the name: store as terminator
+@norm:
+	cmp.b #$00
+	bne @normdone
+	lda.b #$FF
+@normdone:
+	rts
+
 ;Hooked into the tail of the stock ranking init (func_C67821): performs
 ;the two replaced instructions (final byte of the HISCORE marker), then
 ;clears the extension-table marker so the next ranking view rebuilds the
