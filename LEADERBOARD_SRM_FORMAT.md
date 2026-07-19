@@ -1,98 +1,74 @@
 # Leaderboard .srm File Format
 
-This document describes the structure of leaderboard data in Shiren SFC save files (.srm).
+Structure of leaderboard data in Shiren SFC save files (.srm), including the
+extended-name scheme implemented on this branch.
 
-## Summary
+## SRAM banks
 
-The game stores leaderboard rankings in the .srm save file with names truncated to 4 characters maximum. Each character is encoded using the font table defined in `data/mainFontMap.tbl`.
+32KB .srm = 4 banks x 8KB, each mapped at $6000-$7FFF:
 
-## Leaderboard Locations
+| Bank | File offset | Contents |
+|------|-------------|----------|
+| $B0  | 0x0000      | Journal 1 game data; save block at $7B58; ext table (Impasse) at $7EF0 |
+| $B1  | 0x2000      | Journal 2 game data; save block at $7B58; ext table (Food God) at $7EF0 |
+| $B2  | 0x4000      | Journal 3 game data; save block at $7B58; ext table (Wall Scroll) at $7EF0 |
+| $B3  | 0x6000      | All 4 leaderboards (shared across journals); ext table (Final) at $7F53 |
 
-The .srm file contains 4 leaderboards, each supporting up to 50 entries:
+Each journal's save block ($7B58-$7EBF, 0x368 bytes) carries a "VAL" signature
+and checksum (see bank_03 `func_C3E66B` area table). The player's name (up to
+6 chars) is at save block +4.
 
-### 1. Impasse Valley
-- **Max entries**: 50
-- **Start offset**: `0x6007`
-- **Entry spacing**: 40 bytes (`0x28`)
-- **Default entries**: 15
-- **Default names**: Shijima, Heiji, Obito, Tsubute, Kazura, Mugura, Tsumuri, Kanji, Jirokichi, Senzo, Hanzaki, Sabu, Kanpachi, Tage, Yamake
-- **Text labels**: Text1312-Text1326
+## Leaderboards (bank $B3)
 
-### 2. Food God Shrine
-- **Max entries**: 50
-- **Start offset**: `0x67D8`
-- **Entry spacing**: 40 bytes (`0x28`)
-- **Default entries**: 1
-- **Default name**: Shopkeeper (at offset `0x6800`, which is the 2nd slot)
-- **Text label**: Text1327
+4 boards, 50 entries x 40 bytes (0x28), count byte at base-1:
 
-### 3. Wall Scroll Cave
-- **Max entries**: 50
-- **Start offset**: `0x6FA9`
-- **Entry spacing**: 40 bytes (`0x28`)
-- **Default entries**: 5
-- **Default names**: Saruyama, Apprentice 2, Apprentice 3, Apprentice 4, Apprentice 5
-- **Text labels**: Text1328-Text1332
+| Board            | Entries base | Ext table        | Defaults |
+|------------------|--------------|------------------|----------|
+| Impasse Valley   | $B3:6007     | $B0:7EF0         | 15 (Shijima..Yamake) |
+| Food God Shrine  | $B3:67D8     | $B1:7EF0         | Shopkeep (slot 1) |
+| Wall Scroll Cave | $B3:6FA9     | $B2:7EF0         | Saruyama, Trainee 2-5 (slots 1-5) |
+| Final Problem    | $B3:777A     | $B3:7F53         | Fei (slot 0) |
 
-### 4. Final Problem
-- **Max entries**: 50
-- **Start offset**: `0x777A`
-- **Entry spacing**: 40 bytes (`0x28`)
-- **Default entries**: 1
-- **Default name**: Fei
-- **Text label**: Text1333
+Entry layout: +0..3 name (4 chars, font codes, $FF pad / $00 space pad),
++4..5 score (16-bit LE), +6.. stats (level, HP, floor, equipment...).
+"HISCORE\xF3" marker at $B3:7F4B-7F52; when absent the game re-initializes
+all boards (func_C67821).
 
-## Name Encoding
+## Extended names (this branch)
 
-Each name is stored as exactly 4 bytes, one byte per character:
-- Characters are encoded using values from `data/mainFontMap.tbl`
-- `0xFF` is used as a terminator/padding character
-- Names longer than 4 characters are truncated
+The 4-char entry field is untouched. Each board has a parallel extension
+table in proven-free SRAM: 50 slots x 3 bytes `[char5][char6][flag]`:
 
-### Example: "Shijima" → "Shij"
+- flag `$FF` — legacy entry: stock 4-char display
+- flag `$00` — player entry: chars 5-6 valid ($FF = name is <5 chars)
+- flag `$80+n` — default entry: full name rendered from the ROM
+  `LeaderboardDefaultNames` table (22 names, text.asm)
 
-```
-Text representation: S    h    i    j
-Hex encoding:        0x26 0x35 0x36 0x37
-```
+Marker `$4C $58` at $B3:7FEA-7FEB; staging buffer for display at $B3:7FF0.
+When the marker is absent (fresh save, pre-extension save, post-wipe) the
+tables rebuild lazily: FF-fill, then order-match entry names against the
+ROM defaults (with $FF-wildcard padding) and stamp default flags.
 
-## Parser Tool
+Code map (all new code at the end of text.asm, bank $FF):
+- `func_LbExtName` — display hook (bank_04 print-string text command)
+- `func_LbGlyphShift` — VWF compositor shift fix (bank_06 func_C67008)
+- `func_LbExtInit` / `func_LbExtSaveInit` — lazy init + wipe invalidation
+- `func_LbExtInsert` — insert hook (bank_06 func_C630A3/func_C630C1)
 
-Use `tools/parse_srm_leaderboard.py` to extract and decode names from an .srm file:
+Display limit: the ranking rows fit ~9 characters, hence the shortened
+default names. Player names cap at 6 (game-wide name length).
 
-```bash
-python3 tools/parse_srm_leaderboard.py shiren-aeon-genesis.srm
-```
+## Tools
 
-Output:
-```
-=== Shiren SFC Leaderboard Names ===
+- `tools/parse_srm_leaderboard.py` — decode board entries from a .srm
+- `tools/stamp_srm_ext.py` — stamp/inspect extension tables (mostly
+  obsolete now that tables self-initialize; useful for tests)
+- `tools/mesen_sram_watch.lua` — Mesen 2 write-watch for SRAM regions
+- `tools/monitor_sram_changes.py`, `tools/inject_test_name.py` — general
+  SRAM diffing/injection helpers
 
-Impasse Valley:
-   1. Shij
-   2. Heij
-   3. Obit
-   ...
+## Font encoding
 
-Food God Shrine:
-   1. Shir    (player entry)
-   2. Shop    (default entry)
-
-Wall Scroll Cave:
-   1. Saru
-   2. Appr
-   ...
-
-Final Problem:
-   1. Fei
-```
-
-The parser automatically scans up to 50 slots per leaderboard and only displays non-empty entries.
-
-## Font Table Notes
-
-The `mainFontMap.tbl` file contains duplicate mappings where each hex value maps to both:
-1. An English ASCII character (e.g., `26=S`)
-2. A Japanese hiragana character (e.g., `26=じ`)
-
-The parser prioritizes ASCII characters for proper display of English names.
+Names use `data/mainFontMap.tbl` codes (one byte per char). `$FF` = @ =
+terminator/padding, `$00` = space. Short names may be space-padded by the
+game; matching code treats ROM `$FF` padding as a wildcard for this reason.
