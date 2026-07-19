@@ -35,10 +35,10 @@ BOARDS = {
                 ["Shijima", "Heiji", "Obito", "Tsubute", "Kazura", "Mugura",
                  "Tsumuri", "Kanji", "Jirokichi", "Senzo", "Hanzaki", "Sabu",
                  "Kanpachi", "Tage", "Yamake"], 0x80),
-    "foodgod": (0x67D8, 0x3EF0, ["Shopkeeper"], 0x8F),
+    "foodgod": (0x67D8, 0x3EF0, ["Shopkeep"], 0x8F),
     "wallscroll": (0x6FA9, 0x5EF0,
-                   ["Saruyama", "Apprentice 2", "Apprentice 3",
-                    "Apprentice 4", "Apprentice 5"], 0x90),
+                   ["Saruyama", "Trainee 2", "Trainee 3",
+                    "Trainee 4", "Trainee 5"], 0x90),
     "final": (0x777A, 0x7F53, ["Fei"], 0x95),
 }
 

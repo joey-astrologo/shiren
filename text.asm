@@ -2464,12 +2464,12 @@ text "Sabu@@@@@@@@@@@@"
 text "Kanpachi@@@@@@@@"
 text "Tage@@@@@@@@@@@@"
 text "Yamake@@@@@@@@@@"
-text "Shopkeeper@@@@@@"
+text "Shopkeep@@@@@@@@"
 text "Saruyama@@@@@@@@"
-text "Apprentice 2@@@@"
-text "Apprentice 3@@@@"
-text "Apprentice 4@@@@"
-text "Apprentice 5@@@@"
+text "Trainee 2@@@@@@@"
+text "Trainee 3@@@@@@@"
+text "Trainee 4@@@@@@@"
+text "Trainee 5@@@@@@@"
 text "Fei@@@@@@@@@@@@@"
 
 ;Per-board extension table locations (indexed by board*2).
@@ -2493,6 +2493,14 @@ func_LbExtName:
 	php
 	rep #$30 ;AXY->16
 	phy
+	;lazy init: (re)build the extension tables when the marker is absent
+	sep #$20 ;A->8
+	lda.l $B37FEA
+	cmp.b #$4C
+	beq @extready
+	jsr.w func_LbExtInit
+@extready:
+	rep #$20 ;A->16
 	;replicate func_C4BF66: pull 3-byte pointer from param list
 	ldx.b $DD
 	lda.b $DF,x
@@ -2617,4 +2625,174 @@ func_LbGlyphShift:
 	lda.b #$08
 	sec
 	sbc.l $7ED651
+	rtl
+
+;Extension-table initializer. Runs lazily (from func_LbExtName) whenever
+;the marker at $B3:7FEA is absent: on fresh saves, on saves predating the
+;extension scheme, and after the stock ranking init wipes the boards
+;(func_C67821 clears the marker via func_LbExtSaveInit). Per board:
+;FF-fill the table, then walk the board's entries matching their 4-char
+;names against the ROM default names in order ($FF in the ROM name acts
+;as a wildcard, covering the game's space/terminator padding of short
+;names) and stamp default flags. Unmatched entries stay legacy ($FF).
+;Scratch: wTemp05-07 (table ptr), $08 cursor, $09 end, $0A-0C entry ptr,
+;$0D compare byte - all transient text-engine workspace.
+LbInitEntriesBase:
+.dw $6007,$67D8,$6FA9,$777A
+LbInitDefStartW:
+.dw 0,15,16,21
+LbInitDefEndW:
+.dw 15,16,21,22
+
+func_LbExtInit:
+	php
+	rep #$30 ;AXY->16
+	;preserve the caller's DP scratch ($05-$0E): the ranking renderer
+	;keeps live state here while this init runs mid-render
+	lda.b $05
+	pha
+	lda.b $07
+	pha
+	lda.b $09
+	pha
+	lda.b $0B
+	pha
+	lda.b $0D
+	pha
+	ldx.w #$0000     ;X = board*2
+@board:
+	phx
+	;table pointer -> wTemp05-07
+	lda.l LbExtBoardBankW,x
+	sta.b wTemp06
+	lda.l LbExtBoardBase,x
+	sta.b wTemp05
+	;entry pointer -> $0A-0C
+	lda.l LbInitEntriesBase,x
+	sta.b $0A
+	sep #$20 ;A->8
+	lda.b #$B3
+	sta.b $0C
+	;defaults range: cursor -> $08, end -> $09
+	rep #$20 ;A->16
+	lda.l LbInitDefStartW,x
+	sep #$20 ;A->8
+	sta.b $08
+	rep #$20 ;A->16
+	lda.l LbInitDefEndW,x
+	sep #$20 ;A->8
+	sta.b $09
+	;FF-fill the 150-byte table
+	rep #$20 ;A->16
+	ldy.w #$0094
+	lda.w #$FFFF
+@fill:
+	sta.b [wTemp05],y
+	dey
+	dey
+	bpl @fill
+	ldy.w #$0000     ;Y = slot
+@slot:
+	sep #$20 ;A->8
+	lda.b $08
+	cmp.b $09
+	beq @boarddone   ;all of this board's defaults matched
+	;X = cursor*16 (ROM name offset)
+	rep #$20 ;A->16
+	lda.b $08
+	and.w #$00FF
+	asl a
+	asl a
+	asl a
+	asl a
+	tax
+	sep #$20 ;A->8
+	;compare the entry's 4 name bytes against the ROM name prefix
+	phy              ;save slot
+	ldy.w #$0000
+@cmpk:
+	lda.l LeaderboardDefaultNames,x
+	cmp.b #$FF
+	beq @kskip       ;wildcard: short default name padding
+	sta.b $0D
+	lda.b [$0A],y
+	cmp.b $0D
+	bne @nomatch
+@kskip:
+	inx
+	iny
+	cpy.w #$0004
+	bne @cmpk
+	;match: stamp flag $80+cursor at table[slot*3+2]
+	ply              ;Y = slot
+	rep #$20 ;A->16
+	tya
+	pha
+	asl a
+	adc.b 1,s
+	inc a
+	inc a
+	tay              ;Y = slot*3+2
+	sep #$20 ;A->8
+	lda.b $08
+	ora.b #$80
+	sta.b [wTemp05],y
+	rep #$20 ;A->16
+	pla
+	tay              ;Y = slot again
+	sep #$20 ;A->8
+	inc.b $08        ;cursor++
+	bra @next
+@nomatch:
+	ply              ;Y = slot
+@next:
+	;advance entry pointer, next slot
+	rep #$20 ;A->16
+	lda.b $0A
+	clc
+	adc.w #$0028
+	sta.b $0A
+	iny
+	cpy.w #$0032
+	bne @slot
+@boarddone:
+	rep #$30 ;AXY->16
+	plx
+	inx
+	inx
+	cpx.w #$0008
+	beq @allboards
+	jmp.w @board
+@allboards:
+	;stamp the marker
+	sep #$20 ;A->8
+	lda.b #$4C
+	sta.l $B37FEA
+	lda.b #$58
+	sta.l $B37FEB
+	;restore the caller's DP scratch
+	rep #$30 ;AXY->16
+	pla
+	sta.b $0D
+	pla
+	sta.b $0B
+	pla
+	sta.b $09
+	pla
+	sta.b $07
+	pla
+	sta.b $05
+	plp
+	rts
+
+;Hooked into the tail of the stock ranking init (func_C67821): performs
+;the two replaced instructions (final byte of the HISCORE marker), then
+;clears the extension-table marker so the next ranking view rebuilds the
+;tables to match the freshly reset boards.
+;Entry/exit: 8-bit A. Replaces: lda.b #$F3 / sta.l $B37F52 (6 bytes)
+func_LbExtSaveInit:
+	lda.b #$F3
+	sta.l $B37F52
+	lda.b #$00
+	sta.l $B37FEA
 	rtl

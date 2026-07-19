@@ -8633,8 +8633,12 @@ func_C67821:
 	sta.l $B37F50
 	lda.b #$45
 	sta.l $B37F51
-	lda.b #$F3
-	sta.l $B37F52
+	;start of modified code (clears extension-table marker, see text.asm)
+	;replaces: lda.b #$F3 / sta.l $B37F52 (6 bytes)
+	jsl.l func_LbExtSaveInit
+	nop
+	nop
+	;end of modified code
 	ldy.w #$1F44
 	ldx.w #$0000
 	lda.b #$FF

@@ -898,7 +898,7 @@ endtext
 
 ;fe744c
 Text1327:
-text "Shopkeeper"
+text "Shopkeep"
 endtext
 
 ;fe7457
@@ -908,22 +908,22 @@ endtext
 
 ;fe7460
 Text1329:
-text "Apprentice 2"
+text "Trainee 2"
 endtext
 
 ;fe746d
 Text1330:
-text "Apprentice 3"
+text "Trainee 3"
 endtext
 
 ;fe747a
 Text1331:
-text "Apprentice 4"
+text "Trainee 4"
 endtext
 
 ;fe7487
 Text1332:
-text "Apprentice 5"
+text "Trainee 5"
 endtext
 
 ;fe7494
