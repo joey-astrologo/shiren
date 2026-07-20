@@ -34,6 +34,5 @@ SRAM layout, extension-table format, code map, tools.
 - Mesen 2 defaults to random RAM power-on: fresh SRAM looks like data.
   FF-fill regions before drawing conclusions from .srm files, and remember
   .srm only flushes to disk when the ROM closes.
-- Old debugging docs (BREAKPOINT_CHEATSHEET.md, LEADERBOARD_DEBUGGING_PLAN.md,
-  EXTENDING_LEADERBOARD_NAMES.md) predate this implementation; they're kept
-  for the emulator-debugging reference material only.
+- BREAKPOINT_CHEATSHEET.md predates this implementation and is kept as
+  general emulator-debugging reference material.
