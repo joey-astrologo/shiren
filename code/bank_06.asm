@@ -7185,7 +7185,11 @@ func_C66420:
 	and.w #$0800
 	beq @lbl_C669D0
 ;C669C9
-	.db $A9,$CD,$23,$8F,$12,$F5,$7F
+	;modified: sealed-item marker moved from $7FF512 to $7FF554 (one row
+	;down, onto the weapon line at the label/name seam) to match the
+	;original JP layout; the English label is wider than the JP one so
+	;the weapon and shield markers need different columns
+	.db $A9,$CD,$23,$8F,$56,$F5,$7F
 @lbl_C669D0:
 	call_savebank func_C66B21
 	sep #$20 ;A->8
@@ -7271,7 +7275,10 @@ func_C66420:
 	and.w #$0800
 	beq @lbl_C66AFD
 ;C66AF6
-	.db $A9,$CD,$23,$8F,$92,$F5,$7F
+	;modified: sealed-item marker moved from $7FF592 to $7FF5D2 (one row
+	;down, onto the shield line at the label/name seam) to match the
+	;original JP layout
+	.db $A9,$CD,$23,$8F,$D4,$F5,$7F
 @lbl_C66AFD:
 	rep #$20 ;A->16
 	lda.w #$EF86

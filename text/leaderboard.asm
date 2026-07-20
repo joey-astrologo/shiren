@@ -783,12 +783,12 @@ endtext
 
 ;fe739d
 Text1304:
-text "Weapon:"
+text "Weapon:   " ;trailing pad makes room for the sealed-item star cell
 endtext
 
 ;fe73a5
 Text1305:
-text "Shield:"
+text "Shield:  " ;trailing pad makes room for the sealed-item star cell
 endtext
 
 ;fe73ad
