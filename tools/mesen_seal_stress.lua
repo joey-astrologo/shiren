@@ -1,19 +1,17 @@
--- mesen_seal_stress.lua
--- Stress-test the item-description seal list: when the seal renderer
--- (bank_04 $C4224A region) starts, poke the inspected item's seal flags
--- word ($7EA9CE/CF) to the full shield mask $76FD = 12 seals, so the
--- popup has to render the maximum number of attribute lines.
--- USAGE: run the script, then open any sealed shield's description from
--- the inventory. Purely in-RAM: nothing touches the save file.
-
-local armed = true
+-- mesen_seal_stress.lua (v4)
+-- Empirically confirm the seal-list clamp: when the seal-count routine
+-- at $C49E2B runs, its flags word sits in DP $00 - poke it to the full
+-- 12-seal shield mask $76FD and watch what the popup does. The routine
+-- clamps the count at 9 (cpy #$000A / bcc / ldy #$0009), so the window
+-- should show 9 attribute lines, cleanly.
+-- USAGE: run the script, open the sealed shield's description.
 
 emu.addMemoryCallback(function()
-  if armed then
-    emu.write(0xA9CE, 0xFD, emu.memType.snesWorkRam)
-    emu.write(0xA9CF, 0x76, emu.memType.snesWorkRam)
-    emu.log("seal flags poked to $76FD (12 seals) for this description")
-  end
-end, emu.callbackType.exec, 0xC4224A, 0xC4224A, emu.cpuType.snes, emu.memType.snesMemory)
+  local st = emu.getState()
+  local d = st["cpu.d"] or (st.cpu and st.cpu.d) or 0
+  emu.write(d + 0, 0xFD, emu.memType.snesWorkRam)
+  emu.write(d + 1, 0x76, emu.memType.snesWorkRam)
+  emu.log(string.format("poked flags at DP=%04X to $76FD (12 seals)", d))
+end, emu.callbackType.exec, 0xC49E2B, 0xC49E2B, emu.cpuType.snes, emu.memType.snesMemory)
 
-emu.log("seal stress armed: open a sealed shield's description now")
+emu.log("12-seal poke armed: open the sealed shield's description now")
