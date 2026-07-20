@@ -2971,6 +2971,57 @@ func_LbPopClip:
 @qdecdone:
 	rts
 
+;Weapon-line label palette fix for the ranking detail screen. The
+;"Weapon:" label spills its last characters ("half the n and the colon",
+;one cell: $7FF554) past its 5-cell white allocation into the item-name
+;field, whose 23-cell allocation at pos $02C7 runs LATER and stamps the
+;green sealed-item palette on that cell. This helper runs after that
+;allocation (replacing the func_C66B21 call that follows it) and clears
+;the spill cell's palette bits back to 0 (white), keeping tile/priority.
+;Confirmed via tools/mesen_tilemap_dump.lua: cell $F554 = $2E66 (pal 3,
+;label tail pixels); star cell $F556 untouched.
+func_LbWpnLabelFix:
+	php
+	rep #$20 ;A->16
+	lda.l $7FF554
+	and.w #$E3FF     ;clear palette bits -> palette 0 (white)
+	sta.l $7FF554
+	;cursed weapon: draw the cursed marker at the seam cell, taking
+	;precedence over the sealed star written just before this hook
+	;(relocated here from C668EE, where the later allocation wiped it)
+	sep #$20 ;A->8
+	lda.l $7ED639
+	beq @notcursed
+	rep #$20 ;A->16
+	lda.w #$27CC
+	sta.l $7FF556
+@notcursed:
+	plp
+	phb
+	jsl.l func_C66B21
+	plb
+	rtl
+
+;Shield-line marker renderer. Entry: 16-bit A = shield seal-flags word
+;($7ED63F). Draws the sealed star and/or the cursed marker (relocated
+;from C66A1B) at the shield line's label/name seam cell; cursed wins.
+;Exit: 16-bit A (the following stock code expects it).
+func_LbShlMarkers:
+	and.w #$0800
+	beq @notsealed
+	lda.w #$23CD
+	sta.l $7FF5D4
+@notsealed:
+	sep #$20 ;A->8
+	lda.l $7ED63E
+	beq @notcursed
+	rep #$20 ;A->16
+	lda.w #$27CC
+	sta.l $7FF5D4
+@notcursed:
+	rep #$20 ;A->16
+	rtl
+
 ;Hooked into the tail of the stock ranking init (func_C67821): performs
 ;the two replaced instructions (final byte of the HISCORE marker), then
 ;clears the extension-table marker so the next ranking view rebuilds the

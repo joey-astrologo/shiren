@@ -7129,8 +7129,11 @@ func_C66420:
 	sep #$20 ;A->8
 	lda.l $7ED639
 	beq @lbl_C668F7
-	.db $C2,$20,$A9,$CC,$27,$8F,$52,$F5   ;C668EE
-	.db $7F                               ;C668F6  
+	;modified: cursed-marker write relocated to func_LbWpnLabelFix - it ran
+	;too early here (the line's later 23-cell allocation wiped any cell
+	;right of the label), which pinned it inside the label text
+	.db $C2,$20,$EA,$EA,$EA,$EA,$EA,$EA   ;C668EE (rep #$20 + nops)
+	.db $EA                               ;C668F6
 @lbl_C668F7:
 	rep #$20 ;A->16
 	lda.l $7ED637
@@ -7191,7 +7194,12 @@ func_C66420:
 	;the weapon and shield markers need different columns
 	.db $A9,$CD,$23,$8F,$56,$F5,$7F
 @lbl_C669D0:
-	call_savebank func_C66B21
+	;start of modified code (label palette fix, see text.asm)
+	;replaces: call_savebank func_C66B21 (6 bytes)
+	jsl.l func_LbWpnLabelFix
+	nop
+	nop
+	;end of modified code
 	sep #$20 ;A->8
 	lda.b #$00
 	sta.b w7f0002
@@ -7219,8 +7227,10 @@ func_C66420:
 	sep #$20 ;A->8
 	lda.l $7ED63E
 	beq @lbl_C66A24
-	.db $C2,$20,$A9,$CC,$27,$8F,$D2,$F5   ;C66A1B
-	.db $7F                               ;C66A23  
+	;modified: cursed-marker write relocated to func_LbShlMarkers (see
+	;the weapon-line note at C668EE)
+	.db $C2,$20,$EA,$EA,$EA,$EA,$EA,$EA   ;C66A1B (rep #$20 + nops)
+	.db $EA                               ;C66A23  
 @lbl_C66A24:
 	rep #$20 ;A->16
 	lda.l $7ED63C
@@ -7272,13 +7282,19 @@ func_C66420:
 	call_savebank func_C66B8E
 	rep #$20 ;A->16
 	lda.l $7ED63F
-	and.w #$0800
-	beq @lbl_C66AFD
-;C66AF6
-	;modified: sealed-item marker moved from $7FF592 to $7FF5D2 (one row
-	;down, onto the shield line at the label/name seam) to match the
-	;original JP layout
-	.db $A9,$CD,$23,$8F,$D4,$F5,$7F
+	;start of modified code (shield-line markers, see text.asm)
+	;replaces: and #$0800 / beq @lbl_C66AFD / marker write (12 bytes);
+	;the helper draws the sealed star and/or cursed marker at the seam
+	jsl.l func_LbShlMarkers
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	;end of modified code
 @lbl_C66AFD:
 	rep #$20 ;A->16
 	lda.w #$EF86
