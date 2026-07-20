@@ -80,7 +80,9 @@ endtext
 
 ;fe765a
 Text1353:
-text "Sends half the damage you\ltake to your enemy."
+;seal descriptions must be single-line: the seal-list renderer advances
+;one line slot per seal, so a \l here overprints the next seal's line
+text "Returns half the damage you take."
 endtext
 
 ;fe7688
