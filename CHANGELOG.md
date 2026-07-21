@@ -29,6 +29,9 @@ of the Aeon Genesis translation.
   correct; full behavior is only guaranteed on a fresh save.
 
 ### Text / Messages
+- **Fixed a stray Japanese character after "Eat" in the item action
+  menu** — a leftover glyph from the original たべる that the
+  translation missed.
 - **Fixed the "item stolen" message sequence** — corrected message flow
   and line printing when a monster steals an item.
 - **Fixed overlapping seal descriptions in the item detail popup.** On
