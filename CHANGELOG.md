@@ -32,6 +32,9 @@ of the Aeon Genesis translation.
 - **Fixed a stray Japanese character after "Eat" in the item action
   menu** — a leftover glyph from the original たべる that the
   translation missed.
+- **Fixed "Remove" being cut off in the item action menu** — the action
+  menu window was one tile too narrow for the longest English verb;
+  widened it so equipped-item options display in full.
 - **Fixed the "item stolen" message sequence** — corrected message flow
   and line printing when a monster steals an item.
 - **Fixed overlapping seal descriptions in the item detail popup.** On

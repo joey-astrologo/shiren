@@ -13304,7 +13304,7 @@ func_C49BF7:
 	rep #$10 ;XY->16
 	ldx.w #$0019
 	stx.w $AC7D
-	lda.b #$04
+	lda.b #$05
 	sta.w $AC7F
 	ldx.w #$0000
 	stx.w $AC81
