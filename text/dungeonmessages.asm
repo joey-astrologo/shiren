@@ -176,7 +176,7 @@ endtext
 ;fe14bd
 Text22:
 strvar $80
-text " dropped."
+text " dropped.\l"
 endtext
 
 ;fe14c9
@@ -310,7 +310,7 @@ endtext
 ;fe165f
 Text40:
 strvar $86
-text " danced the\lKunekunay."
+text " danced the\lKunekunay.\l"
 endtext
 
 ;fe1678
@@ -383,7 +383,7 @@ endtext
 ;fe1725
 Text50:
 strvar $86
-text " vomited\lsleeping fluid."
+text " vomited\lsleeping fluid.\l"
 endtext
 
 ;fe1740
@@ -601,7 +601,7 @@ endtext
 
 ;fe1b1b
 Text81:
-text "Ugh! ....Your stomach's growling!"
+text "Ugh! ....Your stomach's growling!\l"
 endtext
 
 ;fe1b3d
@@ -720,7 +720,7 @@ endtext
 
 ;fe1daf
 Text100:
-text "Oh! The item was a monster!"
+text "Oh! The item was a monster!\l"
 endtext
 
 ;fe1dcb
@@ -983,7 +983,7 @@ endtext
 
 ;fe2323
 Text142:
-text "Your equipment was covered\lin a chrome coating!"
+text "Your equipment was covered\lin a chrome coating!\l"
 endtext
 
 ;fe2353
@@ -1003,7 +1003,7 @@ endtext
 
 ;fe23c6
 Text145:
-text "the shield you are equipping\lwill become stronger."
+text "the shield you are equipping\lwill become stronger.\l"
 endtext
 
 ;fe23f9
@@ -1661,7 +1661,7 @@ endtext
 
 ;fe326f
 Text250:
-text "You are in a state of\linsomnia!"
+text "You are in a state of\linsomnia!\l"
 endtext
 
 ;fe328f
@@ -1687,7 +1687,7 @@ endtext
 ;fe3314
 Text255:
 strvar $86
-text " is bound by the staff!"
+text " is bound by the staff!\l"
 endtext
 
 ;fe332e

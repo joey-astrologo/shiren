@@ -35,6 +35,12 @@ of the Aeon Genesis translation.
 - **Fixed "Remove" being cut off in the item action menu** — the action
   menu window was one tile too narrow for the longest English verb;
   widened it so equipped-item options display in full.
+- **Fixed nine messages that displayed as blank or cut-off boxes.** The
+  translation had dropped a trailing line-break, so the text never
+  flushed to the screen — most visibly the "[item] dropped." box when a
+  thrown item or dodged arrow lands on the floor (now shows the item
+  name, e.g. "Wood Arrow dropped."), plus the chrome-coating, insomnia,
+  staff-binding, monster-in-disguise, and dance messages, among others.
 - **Fixed the "item stolen" message sequence** — corrected message flow
   and line printing when a monster steals an item.
 - **Fixed overlapping seal descriptions in the item detail popup.** On
