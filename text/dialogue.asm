@@ -5603,7 +5603,7 @@ endtext
 
 ;ffded7
 Text2288:
-text "Plump Man: \"The Golden Condor\lwas beautiful."
+text "Plump Man: \"The Golden Condor\lwas beautiful.\l"
 textfunction $2
 text "It sparkled so wonderfully in\lthe sunset..."
 cleartext

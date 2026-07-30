@@ -662,7 +662,7 @@ endtext
 
 ;fe8aaa
 Text1469:
-text "This prevents you from picking up\lany items on the current floor.Scribe: Slippery"
+text "This prevents you from picking up\lany items on the current floor.\lScribe: Slippery"
 endtext
 
 ;fe8afc
