@@ -49,6 +49,17 @@ of the Aeon Genesis translation.
   window. All seal descriptions now fit correctly, verified up to the
   12-seal maximum.
 
+### Floor / area titles
+- **Fixed the floor announcement banner mangling two-digit floor numbers
+  in dungeons with long English names.** On floors 10 and up in the Cave
+  of the Wall Scroll and the Shrine of the Food God (and at the Foot of
+  the Rainbow), the tens digit was drawn one column left of the screen
+  and wrapped onto the row above — showing "6 Cave of the Wall Scroll"
+  with a stray "1" split across the right and left edges. Those titles
+  were positioned one column too far left for the number to fit; they now
+  start where the original Japanese put its own full-width title, so
+  "16 Cave of the Wall Scroll" fits on one line.
+
 ## Notes
 - This is a fan-made addendum and is not affiliated with the original
   translation's authors.

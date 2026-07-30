@@ -259,6 +259,14 @@ func_C5CDB0:
 	bne @lbl_C5CDB7
 	rts
 
+;Area title table: one 10-byte record per title, starting at UNREACH_C5CDCE.
+;  byte 0  : tilemap column where the name starts
+;  bytes1-9: name cells (3x3 tiles each, one cell every 3 columns),
+;            $FD = blank cell, $F8 = end padding
+;The floor number is drawn to the left of the name - ones digit at
+;column-3, tens digit at column-5 - so a 9-cell name must start at column
+;5 exactly: lower wraps the tens digit onto the previous tilemap row,
+;higher pushes the last cell past the end of the row.
 UNREACH_C5CDCE:
 	.db $05
 
@@ -348,7 +356,7 @@ AreaNames:
 	.db $8E,$8F,$90,$91,$92 ;"Golden City"
 	.db $FD,$FD,$F8,$F8
 	
-	.db $04
+	.db $05
 	.db $93,$94,$95,$96,$97,$98,$99,$9A,$9B ;"Foot of the Rainbow"
 	
 	.db $09
@@ -363,10 +371,10 @@ AreaNames:
 	.db $A8,$A9,$AA,$AB,$AC,$AD,$AE,$AF ;"Fei's Final Problem"
 	.db $F8
 	
-	.db $04
+	.db $05
 	.db $B0,$B1,$B2,$B3,$B4,$B5,$B6,$B7,$B8 ;"Shrine of the Food God"
 	
-	.db $04
+	.db $05
 	.db $B9,$BA,$BB,$BC,$BD,$BE,$BF,$C0,$C1 ;"Cave of the Wall Scroll"
 	
 	.db $05
