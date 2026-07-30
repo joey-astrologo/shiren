@@ -48,6 +48,29 @@ of the Aeon Genesis translation.
   break that overprinted the seals below it and pushed text out of the
   window. All seal descriptions now fit correctly, verified up to the
   12-seal maximum.
+- **Fixed two lines that ran past the window edge and split mid-word.**
+  The renderer has no word wrapping — it breaks a line wherever it runs
+  out of room — so a line that is too long loses its tail to the next
+  row. The Plump Man's "The Golden Condor was beautiful." line was
+  missing a line break before the following sentence, so it printed
+  "beautiful.It sparkled so wonderfully i / n"; the Slippery Scroll's
+  description was missing the break before its "Scribe:" credit that
+  every other item description has.
+
+### Signs
+- **Fixed the Mountaintop Restaurant "Gakeppuchi" sign** pushing its
+  closing quote onto a second, otherwise empty sign board. The sign's
+  left padding was inherited from the shorter Japanese text, leaving the
+  English name a couple of pixels too wide for the board.
+- **Fixed the Golden City "This is the other side of the Earth" sign**,
+  which was badly garbled — it kept the Japanese full-width bracket
+  layout, where padding pushes a closing bracket out to the right edge,
+  around English text nearly twice as wide as the kanji it replaced.
+- **Fixed the "New store changed! / Restaurant Togeya" sign** splitting
+  across two boards instead of showing both lines on one, and a stray
+  empty board after the "Alleycat's path" sign. Both were caused by
+  leftover padding that positioned a Japanese closing bracket the
+  English text no longer has.
 
 ### Floor / area titles
 - **Fixed the floor announcement banner mangling two-digit floor numbers

@@ -10,11 +10,9 @@ text "Reorganizing\l@"
 Text2341:
 textfunction $0 $48
 text "New store changed!"
-textfunction $0 $53
 text "\l"
 textfunction $0 $4A
 text "Restaurant \"Togeya\" "
-textfunction $0 $4A
 text "\l@"
 
 ;ffed2c
@@ -23,9 +21,8 @@ textfunction $0 $58
 text "Safe to eat"
 textfunction $0 $50
 text "\l"
-textfunction $0 $18
+textfunction $0 $08
 text "Mountaintop Restaurant \"Gakeppuchi\""
-textfunction $0 $2C
 text "\l@"
 
 ;ffed69
@@ -87,7 +84,6 @@ text "Bar \"Drunken Pavillion\"\l@"
 Text2352:
 textfunction $0 $23
 text "Deliveryman \"Alleycat's path\""
-textfunction $0 $25
 text "\l@"
 
 ;ffeee2
@@ -153,12 +149,8 @@ text "Inn \"Boulder Shadow\"\l@"
 
 ;fff026
 Text2364:
-text "\""
-textfunction $0 $35
-text "This is the other side of the Earth"
-textfunction $0 $35
-text "\""
-text "\l"
+textfunction $0 $08
+text "\"This is the other side of the Earth\"\l"
 endtext
 
 ;fff053
