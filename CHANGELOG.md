@@ -57,6 +57,17 @@ of the Aeon Genesis translation.
   description was missing the break before its "Scribe:" credit that
   every other item description has.
 
+### Spelling
+- **Fixed 23 spelling and consistency errors across the script**, found by
+  checking every English string in the ROM against a dictionary and a set
+  of pattern rules. Eighteen misspellings — including "weilding",
+  "posion", "theivery", "forsee", "Diety", "protusion" and "Increadible"
+  — plus "the the" in two lines, two spacing slips, and the Nightingale
+  Picture Scroll. Two were inconsistencies rather than plain typos: a
+  single stray "Pekiji" for Pekeji in the note left inside his charm, and
+  "Goken-Manjikabra" as an item name where the description and dialogue
+  both say Manjikabura.
+
 ### Signs
 - **Fixed the Mountaintop Restaurant "Gakeppuchi" sign** pushing its
   closing quote onto a second, otherwise empty sign board. The sign's

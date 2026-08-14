@@ -22,29 +22,19 @@
 -- dialogue set, read a sign for the sign set - so the message is drawn in the
 -- window it would really use. Forcing a sign into an NPC window (or vice versa)
 -- tests nothing, because the box is sized before the text is drawn.
-local SET = "signs"
+local SET = "dialogue"
 
 local ONLY = nil -- set to an index to lock on one entry, nil to cycle
 
--- Message ids are the index into TextPointerTable in text.asm, and every
--- TextNNNN label's id is exactly its number (checked: 0 mismatches of 2388).
+-- The two lines a spelling fix pushed to 41 characters, plus controls. Every
+-- other long line in the script was checked in game and renders fine, so this
+-- set is deliberately small - load mesen_overflow_watch.lua alongside it and
+-- watch for an OVERFLOW line rather than judging by eye.
 local dialogue = {
-  { 1635, "46ch Ending/Gaibara: \"That's the legendary Condor...It's beautiful.\" <- strongest suspect" },
-  { 1621, "44ch Intro: \"Just a little bit further to the Valley Inn.\"" },
-  { 1653, "43ch Ending/Old Man: \"If only I live long enough to see\"" },
-  { 1626, "42ch Ending/Koppa: \"[name]! ...Hey, look over there!\" (length depends on your name)" },
-  { 2196, "43ch Golden City tablet: \"if at all, but whoever reads these words...\"" },
-  { 1879, "43ch Pekeji: \"I promise, I won't screw up again!\"" },
-  { 1842, "43ch Pekeji: \"...Feels kind of weird to say it...*blush*\"" },
-  { 1870, "42ch Pekeji: \"I want to help you however I can. Please!\"" },
-  { 1886, "42ch Pekeji: \"I'll do my best to help you out!\"" },
-  { 1910, "42ch Koppa: \"So this is the new restaurant I've\"" },
-  { 1793, "42ch #5 Disciple: \"Now that the Master's gotten\"" },
-  { 1760, "42ch #5 Disciple: \"here, but at the moment he's got 'Artist's\"" },
-  { 1763, "42ch Gaibara: \"....Saruyama! My first disciple!\"" },
-  { 1715, "42ch Woman: \"when you see it flying will be granted...\"" },
-  { 1808, "42ch Man: \"really can see, can't you! We have proof!\"" },
-  { 2288, "CONTROL, already fixed: Plump Man / Golden Condor - should NOT overflow" },
+  { 1836, "41ch  \"Afterwards I took a look inside the charm\" <- was Aftwards" },
+  { 1883, "41ch  \"Since we last met, I've been training and\" <- was Sice" },
+  { 2288, "CONTROL, known good: Plump Man / Golden Condor" },
+  { 1715, "CONTROL, known good: Woman / Golden Condor legend (42ch)" },
 }
 
 -- Signs, longest line first. Estimated extent to the last glyph is in brackets;

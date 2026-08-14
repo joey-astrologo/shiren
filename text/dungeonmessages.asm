@@ -2128,7 +2128,7 @@ endtext
 
 ;fe3cd0
 Text327:
-text "There was a protusion on\lthe ground!\l"
+text "There was a protrusion on\lthe ground!\l"
 endtext
 
 ;fe3cf6

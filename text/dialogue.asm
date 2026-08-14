@@ -207,7 +207,7 @@ endtext
 ;fe9d6c
 IntroCutsceneText22:
 textfunction $0 $10
-text "Ah!  Hey, wait up!"
+text "Ah! Hey, wait up!"
 endtext
 
 ;fe9d82
@@ -235,7 +235,7 @@ endtext
 
 ;fe9df3
 Text1623:
-text "Koppa: \"This is...Increadible!\lLet's go check it out!\""
+text "Koppa: \"This is...Incredible!\lLet's go check it out!\""
 endtext
 
 ;fe9e2a
@@ -1313,7 +1313,7 @@ text "...Oh, no!"
 next
 text "Just by force of habit, I..."
 cleartext
-text "Oh dear, this is embarrasing!\lHa ha ha ha ha ha ha!\lHa ha ha ha ha ha ha!\lHahahahahahahahahahahahaha!"
+text "Oh dear, this is embarrassing!\lHa ha ha ha ha ha ha!\lHa ha ha ha ha ha ha!\lHahahahahahahahahahahahaha!"
 cleartext
 text "...I have wronged you."
 cleartext
@@ -1571,7 +1571,7 @@ endtext
 
 ;fee09f
 Text1800:
-text "Zato-Kechi: \"...Wow, are\lyou ever tense....\lDon't worry, my Shiatsu techique is the\lsame as what you'd get from a 'Back Pot.'"
+text "Zato-Kechi: \"...Wow, are\lyou ever tense....\lDon't worry, my Shiatsu technique is the\lsame as what you'd get from a 'Back Pot.'"
 cleartext
 text "And as they say, there are some\lthings you can't see with\ljust your eyes....\lAh, here we go!\"\l"
 endtext
@@ -1775,7 +1775,7 @@ endtext
 
 ;feea1e
 Text1830:
-text "Okami: \"Since we're so busy in the shop\lI hired some help, but this guy is such\la clutz!\"\l"
+text "Okami: \"Since we're so busy in the shop\lI hired some help, but this guy is such\la klutz!\"\l"
 endtext
 
 ;feea79
@@ -1833,7 +1833,7 @@ text "Even if I die, you're\lnot alone...'"
 cleartext
 text "Then she died."
 next
-text "Aftwards I took a look inside the charm\land saw a little paper saying 'Pekiji,\lbrother of "
+text "Afterwards I took a look inside the charm\land saw a little paper saying 'Pekeji,\lbrother of "
 strvar $81
 text "' inside....\"\l"
 endtext
@@ -2194,14 +2194,14 @@ endtext
 
 ;ff16ea
 Text1882:
-text "Pekeji: \"I'll work hard, so I'll be much\lstronger and better able to help you the\l next time we meet.\l...See you.\"\l"
+text "Pekeji: \"I'll work hard, so I'll be much\lstronger and better able to help you the\lnext time we meet.\l...See you.\"\l"
 endtext
 
 ;ff175e
 Text1883:
 text "Pekeji: \"Ah, Bro!\""
 next
-text "Sice we last met, I've been training and\lam a lot tougher! Take me with you!\"\l"
+text "Since we last met, I've been training and\lam a lot tougher! Take me with you!\"\l"
 endtext
 
 ;ff17c0
@@ -2999,7 +2999,7 @@ endtext
 
 ;ff3f71
 Text1991:
-text "Customer: \"This is unbelieveable!\l"
+text "Customer: \"This is unbelievable!\l"
 textfunction $2
 text "It would make Bufoo himself drool!\"\l"
 endtext
@@ -3057,7 +3057,7 @@ endtext
 
 ;ff4150
 Text2000:
-text "Smith: \"This is the the Smithy."
+text "Smith: \"This is the Smithy."
 next
 text "For 1000 Gitan, I'll temper your\lblade for you, what do you say?\"\l"
 endtext
@@ -3538,7 +3538,7 @@ endtext
 FortuneTellerText1:
 text "Sidewalk Fortuneteller: \"Oh, traveller!\lI am a sidewalk fortuneteller,\lin the employ of Reeva, God of Fate."
 cleartext
-text "Do you want me to forsee the\lfuture of your journey?\"\l"
+text "Do you want me to foresee the\lfuture of your journey?\"\l"
 endtext
 
 ;ff58cf
@@ -3691,7 +3691,7 @@ endtext
 
 ;ff5f32
 Text2082:
-text "Kazura: \"I can't make it past\lthe the Mountain Spirit Cave."
+text "Kazura: \"I can't make it past\lthe Mountain Spirit Cave."
 next
 text "Those monsters enveloped in flame\lare really tough."
 cleartext
@@ -4747,7 +4747,7 @@ text "This is Amteca, the Golden City.\l"
 textfunction $0 $6
 text "With the Golden Condor as Divine Bird\l"
 textfunction $0 $A
-text "and the destiny of the Guardian Diety,\l"
+text "and the destiny of the Guardian Deity,\l"
 textfunction $0 $60
 text "Reeva,"
 cleartext
@@ -4842,7 +4842,7 @@ endtext
 
 ;ffa3c1
 Text2200:
-text "Koppa: \"Brrr....\lIt's cold and forboding in\lthere! Good luck, partner!\"\l"
+text "Koppa: \"Brrr....\lIt's cold and foreboding in\lthere! Good luck, partner!\"\l"
 endtext
 
 ;ffa40a
@@ -4913,7 +4913,7 @@ endtext
 
 ;ffa8a5
 Text2211:
-text "Mother: \"We're very pround of our\leldest son. He went far away to\lstudy the Mysterious Dungeon.\"\l"
+text "Mother: \"We're very proud of our\leldest son. He went far away to\lstudy the Mysterious Dungeon.\"\l"
 endtext
 
 ;ffa907
@@ -5089,7 +5089,7 @@ endtext
 
 ;ffb6a6
 Text2231:
-text "Hanzaki the Unfortunate: \"The Heavy\lShield makes great defense, but\lweilding it will make you hungry\lreally quick."
+text "Hanzaki the Unfortunate: \"The Heavy\lShield makes great defense, but\lwielding it will make you hungry\lreally quick."
 cleartext
 text "Leather Shields make you less\lhungry and won't rust, but are\lreally weak."
 cleartext
@@ -5546,7 +5546,7 @@ endtext
 
 ;ffda8e
 Text2282:
-text "Heiji the Unforunate: \"You're\lgreat, "
+text "Heiji the Unfortunate: \"You're\lgreat, "
 strvar $81
 text "!"
 next
@@ -5758,7 +5758,7 @@ endtext
 
 ;ffe89d
 Text2306:
-text "The old man was poisoned to\ldeath by the posion in the\lRice Ball...\l"
+text "The old man was poisoned to\ldeath by the poison in the\lRice Ball...\l"
 endtext
 
 ;ffe8e2

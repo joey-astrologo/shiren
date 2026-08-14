@@ -26,7 +26,7 @@ text "Dotanuki@"
 
 ;fe5742
 Text770:
-text "Goken-Manjikabra@"
+text "Goken-Manjikabura@"
 
 ;fe5753
 Text771:
@@ -1194,7 +1194,7 @@ text "Crane Picture Scroll@"
 
 ;fe6599
 Text1062:
-text "Nightengale Picture Scroll@"
+text "Nightingale Picture Scroll@"
 
 ;fe65b4
 Text1063:

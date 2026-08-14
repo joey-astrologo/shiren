@@ -107,7 +107,7 @@ endtext
 
 ;fe76e6
 Text1358:
-text "Prevents theivery."
+text "Prevents thievery."
 endtext
 
 ;fe76f9
