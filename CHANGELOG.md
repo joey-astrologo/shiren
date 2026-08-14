@@ -67,6 +67,11 @@ of the Aeon Genesis translation.
   single stray "Pekiji" for Pekeji in the note left inside his charm, and
   "Goken-Manjikabra" as an item name where the description and dialogue
   both say Manjikabura.
+- **Fixed 13 lines of dialogue missing the colon after the speaker's
+  name.** The script attributes dialogue as `Name: "..."` 632 times;
+  thirteen lines dropped the colon, including three of Zato-Kechi's and
+  two of Pekeji's. Every speaker involved is punctuated correctly
+  elsewhere.
 
 ### Signs
 - **Fixed the Mountaintop Restaurant "Gakeppuchi" sign** pushing its

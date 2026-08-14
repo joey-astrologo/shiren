@@ -524,7 +524,7 @@ endtext
 
 ;fea55a
 Text1665:
-text "Shopkeeper \"Oh no!\lA Big Room!\lI've gotta hurry to the stairs!\"\l"
+text "Shopkeeper: \"Oh no!\lA Big Room!\lI've gotta hurry to the stairs!\"\l"
 endtext
 
 ;fea59b
@@ -599,7 +599,7 @@ endtext
 
 ;fea9e7
 Text1676:
-text "Ruin Robber \"Hic...I believe it!"
+text "Ruin Robber: \"Hic...I believe it!"
 cleartext
 text "...Shome great professor told me.\lThe mysterious ruins from legend, the\l'Golden City,' is in the 'Land of\lthe Sun'...hic\"\l "
 endtext
@@ -1519,7 +1519,7 @@ endtext
 
 ;feddd1
 Text1791:
-text "Gaibara \"Hm....\lDo you want to hear an\lexplanation of the Fusion Pot?\"\l"
+text "Gaibara: \"Hm....\lDo you want to hear an\lexplanation of the Fusion Pot?\"\l"
 endtext
 
 ;fede19
@@ -1542,7 +1542,7 @@ endtext
 
 ;fedf0f
 Text1795:
-text "Zato-Kechi \"Are you feeling under\lthe weather at all?"
+text "Zato-Kechi: \"Are you feeling under\lthe weather at all?"
 next
 text "I'm Zato-Kechi, Shiatsu Masseuse!"
 cleartext
@@ -1702,7 +1702,7 @@ endtext
 Text1819:
 text "Don't ever do anything like that again!\""
 next
-text "Zato-Kechi \"Y-yessir...\""
+text "Zato-Kechi: \"Y-yessir...\""
 cleartext
 text "Man: \"All right everyone! Let's\lforget it and just leave!\"\l"
 endtext
@@ -1760,7 +1760,7 @@ endtext
 
 ;fee98b
 Text1827:
-text "Zato-Kechi \"Boss, I'm at my\llimit here...\"\l"
+text "Zato-Kechi: \"Boss, I'm at my\llimit here...\"\l"
 endtext
 
 ;fee9b7
@@ -1933,7 +1933,7 @@ endtext
 
 ;fef399
 Text1850:
-text "Pekeji \"....Yeah..."
+text "Pekeji: \"....Yeah..."
 cleartext
 text "I guess blood is thicker\lthan water, but not money....\"\l"
 endtext
@@ -2017,7 +2017,7 @@ endtext
 
 ;fef85d
 Text1860:
-text "Okami \"Pekeji's not back yet.\lDo you know what happened to him?\"\l"
+text "Okami: \"Pekeji's not back yet.\lDo you know what happened to him?\"\l"
 endtext
 
 ;fef89f
@@ -2089,7 +2089,7 @@ endtext
 
 ;fefb7e
 Text1868:
-text "Pekeji \"...................\lDon't just stand there, say something.\lWaooooooh!\"\l"
+text "Pekeji: \"...................\lDon't just stand there, say something.\lWaooooooh!\"\l"
 endtext
 
 ;ff1200
@@ -2456,7 +2456,7 @@ endtext
 
 ;ff25e5
 Text1916:
-text "Suzuko \"Welcome! Please, take a seat.\"\l"
+text "Suzuko: \"Welcome! Please, take a seat.\"\l"
 endtext
 
 ;ff260d
@@ -3340,7 +3340,7 @@ endtext
 
 ;ff4df6
 Text2032:
-text "Little Girl \"....*sniff*\"\l"
+text "Little Girl: \"....*sniff*\"\l"
 endtext
 
 ;ff4e11
@@ -5464,7 +5464,7 @@ endtext
 
 ;ffd545
 Text2272:
-text "Foreign Wanderer \"Phew, I feel\lbetter...\"\l"
+text "Foreign Wanderer: \"Phew, I feel\lbetter...\"\l"
 endtext
 
 ;ffd570
@@ -5570,7 +5570,7 @@ endtext
 
 ;ffdc01
 Text2285:
-text "Kanji the Improver \"I'm not like\lthose types that charge headfirst\ltoward Table Mountain, only to\lget whacked."
+text "Kanji the Improver: \"I'm not like\lthose types that charge headfirst\ltoward Table Mountain, only to\lget whacked."
 cleartext
 text "Look at this, the shine on\lmy Katana +15!"
 next
