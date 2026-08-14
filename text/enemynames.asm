@@ -384,7 +384,7 @@ text "Surara@"
 
 ;fe4db2
 Text548:
-text "O-Ryu@"
+text "Oryu@"
 
 ;fe4db8
 Text549:

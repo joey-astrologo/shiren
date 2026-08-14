@@ -1121,9 +1121,9 @@ endtext
 
 ;feca91
 OryuDialogue3Text2:
-text "Woman: \"Great...my name is O-ryu."
+text "Woman: \"Great...my name is Oryu."
 next
-text "They call me 'Blinding O-ryu' around\lthese parts.\lLet's go! "
+text "They call me 'Oryu the Blinder' around\lthese parts.\lLet's go! "
 textfunction $7F $14
 text "Hee hee..."
 cleartext
@@ -1175,26 +1175,26 @@ endtext
 
 ;fecbf5
 OryuDialogue4Text1:
-text "O-Ryu \"Ah, we meet again!"
+text "Oryu: \"Ah, we meet again!"
 next
 text "Can I join up with you?\"\l"
 endtext
 
 ;fecc29
 Text1756:
-text "O-Ryu \"I love adventures!\"\l"
+text "Oryu: \"I love adventures!\"\l"
 endtext
 
 ;fecc45
 Text1757:
-text "O-Ryu \""
+text "Oryu: \""
 strvar $87
 text "s are \lno sweat!\"\l"
 endtext
 
 ;fecc61
 Text1758:
-text "O-Ryu \"I think I've about had it...\"\l"
+text "Oryu: \"I think I've about had it...\"\l"
 endtext
 
 ;fecc87
@@ -5804,7 +5804,7 @@ endtext
 Text2312:
 textfunction $2
 cmdf6
-text "But Blinding O-Ryu\ljoined you!"
+text "But Oryu the Blinder\ljoined you!"
 playsound 50
 text " \l"
 endtext
@@ -5812,7 +5812,7 @@ endtext
 ;ffe9b1
 Text2313:
 cmdf6
-text "O-ryu joined you!"
+text "Oryu joined you!"
 playsound 55
 text " \l"
 endtext
