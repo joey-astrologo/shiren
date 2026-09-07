@@ -1,0 +1,153 @@
+text_id,current_name,status,required_review
+Text996,Red Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text997,Blue Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text998,Yellow Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text999,Green Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1000,White Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1001,Black Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1002,Purple Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1003,Brown Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1004,Grey Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1005,Aqua Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1006,Chartreuse Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1007,Umber Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1008,Black-white Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1009,Red-white Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1010,Feldspar Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1011,Crimson herb,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1012,Rainbow Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1013,Colorless Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1014,Turquoise Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1015,Scarlet Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1016,Indigo Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1017,Tan Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1018,Goldenrod Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1019,Bluegreen Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1020,Violet herb,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1021,Magenta Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1022,Iridescent Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1023,Sienna Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1024,Maroon Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1025,Fuchsia Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1026,Almond herb,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1027,Ochre Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1028,Olive Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1029,Cream Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1030,Plum Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1031,Beige Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1032,Sepia Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1033,Lemon Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1034,Rose Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1035,Salmon Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1036,Peach Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1037,Orchid Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1038,Cobalt Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1039,Golden herb,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1040,Pink Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1041,Orange Herb,review,Review Grass category suffix and appearance vocabulary; preserve slot.
+Text1042,Mouse Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1043,Cow Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1044,Tiger Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1045,Rabbit Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1046,Dragon Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1047,Snake Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1048,Horse Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1049,Sheep Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1050,Monkey Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1051,Chicken Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1052,Dog Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1053,Boar Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1054,Cat Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1055,Deer Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1056,Frog Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1057,Lizard Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1058,Elephant Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1059,Giraffe Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1060,Turtle Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1061,Crane Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1062,Nightingale Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1063,Bear Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1064,Sparrow Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1065,Hippo Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1066,Lion Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1067,Rhino Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1068,Condor Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1069,Hawk Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1070,Dove Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1071,Crow Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1072,Eagle Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1073,White-eye Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1074,Koala Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1075,Ostrich Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1076,Fox Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1077,Tanuki Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1078,Weasel Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1079,Alligator Picture Scroll,review,Review unidentified scroll naming convention; preserve slot and avoid real spell aliases.
+Text1080,Cherry Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1081,Plum Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1082,Pine Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1083,Bamboo Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1084,Cedar Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1085,Willow Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1086,Chestnut Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1087,Stone Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1088,Bone Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1089,Fang Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1090,Paulownia Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1091,Lead Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1092,Iron Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1093,Copper Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1094,Tin Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1095,Gold Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1096,Silver Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1097,Bronze Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1098,Hinoki Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1099,Oak Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1100,Maple Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1101,Zelkova Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1102,Birch Staff,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1103,Diamond Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1104,Pearl Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1105,Ruby Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1106,Sapphire Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1107,Coral Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1108,Turquoise Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1109,Emerald Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1110,Amethyst Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1111,Opal Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1112,Jade Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1113,Amber Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1114,Topaz Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1115,Agate Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1116,Zirconia Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1117,Garnet Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1118,Cattleya Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1119,Lapis Lazuli Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1120,Aquamarine Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1121,Moonstone Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1122,Tiger Eye Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1123,Bloodstone Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1124,Malachite Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1125,Cat's Eye Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1126,Crystal Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1127,Glass Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1128,Platinum Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1129,Thormaline Bracer,review,Review Bracelet category suffix and appearance vocabulary; preserve slot.
+Text1130,Skinny Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1131,Round Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1132,Cubical Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1133,Triangle Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1134,Fat Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1135,Starshaped Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1136,Eggshaped Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1137,Shallow Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1138,Deep Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1139,Semicircle Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1140,Crescent Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1141,Slanted Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1142,Warped Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1143,Hourglass Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1144,Gourd-like Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1145,Uneven Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1146,Diamond Pot,review,Review appearance vocabulary; preserve randomization slot and category.
+Text1147,Bulbous Pot,review,Review appearance vocabulary; preserve randomization slot and category.

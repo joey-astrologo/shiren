@@ -1,0 +1,233 @@
+item_id,symbol,name_text_id,description_text_id,current_name,japanese_or_source_comment,candidate_name,status,reference_url,notes
+$00,Item_Cudgel,Text764,Text1359,Club,こん棒,,review,,SFC club identity; do not assume Wooden Sword.
+$01,Item_Nagamaki,Text765,Text1360,Nagamaki,長巻,,review,,No direct target established.
+$02,Item_BufusCleaver,Text766,Text1361,Bufoo's Cleaver,ブフーの包丁,,review,,Meat-system item; do not substitute Peach Club.
+$03,Item_Katana,Text767,Text1362,Katana,カタナ,Katana,candidate,https://sharksnack.github.io/shiren-6/items/weapons/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$04,Item_Dragonkiller,Text768,Text1363,Dragon Killer,ドラゴンキラー,Dragonkiller,candidate,https://sharksnack.github.io/shiren-6/items/weapons/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$05,Item_Mastersword,Text769,Text1364,Dotanuki,どうたぬき,Doutanuki,candidate,https://sharksnack.github.io/shiren-6/items/weapons/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$06,Item_KabrasBlade,Text770,Text1365,Goken-Manjikabura,剛剣マンジカブラ,Manji Kabura,candidate,https://sharksnack.github.io/shiren-6/items/weapons/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$07,Item_SickleSlayer,Text771,Text1366,Exorcist Sickle,成仏の鎌,Sickle of Salvation,candidate,https://sharksnack.github.io/shiren-6/items/weapons/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$08,Item_Pickaxe,Text772,Text1367,Pickaxe,つるはし,Pickaxe,candidate,https://sharksnack.github.io/shiren-6/items/weapons/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$09,Item_HomingBlade,Text773,Text1368,Accuracy Sword,必中の剣,Accurate Sword,candidate,https://sharksnack.github.io/shiren-6/items/weapons/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$0A,Item_MinotaursAxe,Text774,Text1369,Minotaur Axe,ミノタウロスの斧,Axe of the Minotaur,candidate,https://sharksnack.github.io/shiren-6/items/weapons/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$0B,Item_RazorWind,Text775,Text1370,Yoto Kamaitachi,妖刀かまいたち,Kama Itachi,candidate,https://sharksnack.github.io/shiren-6/items/weapons/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$0C,Item_CyclopsKiller,Text776,Text1371,One-eye Killer,１ツ目殺し,Cyclops Bane,candidate,https://sharksnack.github.io/shiren-6/items/weapons/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$0D,Item_DrainBuster,Text777,Text1372,Drain Buster,ドレインバスター,Drain Slayer,candidate,https://sharksnack.github.io/shiren-6/items/weapons/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$0E,Item_Firebrand,Text778,Text1373,Kajinfumato,火迅風魔刀,Kajin Fuuma,candidate,https://sharksnack.github.io/shiren-6/items/weapons/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$0F,Item_KabraReborn,Text779,Text1374,Hiken Kaburasutegi,秘剣カブラステギ,Kabura Sutegi,candidate,https://sharksnack.github.io/shiren-6/items/weapons/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$10,Item_WoodArrow,Text780,Text1375,Wood Arrow,木の矢,Wooden Arrow,candidate,https://sharksnack.github.io/shiren-6/items/projectiles/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$11,Item_IronArrow,Text781,Text1376,Iron Arrow,鉄の矢,Iron Arrow,candidate,https://sharksnack.github.io/shiren-6/items/projectiles/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$12,Item_SilverArrow,Text782,Text1377,Silver Arrow,銀の矢,Silver Arrow,candidate,https://sharksnack.github.io/shiren-6/items/projectiles/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$13,Item_13,Text783,Text1378,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$14,Item_14,Text784,Text1379,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$15,Item_15,Text785,Text1380,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$16,Item_HideShield,Text786,Text1381,Leather Shield,皮甲の盾,,review,,Do not equate with Shield of Sating from hunger effect alone.
+$17,Item_Bronzeward,Text787,Text1382,Bronze Shield,青銅甲の盾,Bronze Shield,candidate,https://sharksnack.github.io/shiren-6/items/shields/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$18,Item_AntiPoisonShield,Text788,Text1383,Antidote Shield,unused item (jp name: 無どくの盾),,protected,,Preserve unused slot; no new item.
+$19,Item_WoodShield,Text789,Text1384,Wooden Shield,木甲の盾,Wooden Shield,candidate,https://sharksnack.github.io/shiren-6/items/shields/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$1A,Item_IronShield,Text790,Text1385,Iron Shield,鉄甲の盾,Iron Shield,candidate,https://sharksnack.github.io/shiren-6/items/shields/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$1B,Item_Dragonward,Text791,Text1386,Dragon Shield,ドラゴンシールド,Dragon Shield,candidate,https://sharksnack.github.io/shiren-6/items/shields/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$1C,Item_Windshield,Text792,Text1387,Fuma Shield,風魔の盾,Fuuma Shield,candidate,https://sharksnack.github.io/shiren-6/items/shields/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$1D,Item_SpikedWard,Text793,Text1388,Battle Counter,バトルカウンター,Counter Shield,candidate,https://sharksnack.github.io/shiren-6/items/shields/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$1E,Item_ArmorWard,Text794,Text1389,Heavy Shield,重装の盾,,review,,No defensible direct Shiren 6 target established in this audit.
+$1F,Item_EchoShield,Text795,Text1390,Echo Shield,やまびこの盾,,review,,Reflecting magic is not necessarily Shiren 6 negation.
+$20,Item_EvasiveShield,Text796,Text1391,Reflex Shield,見切りの盾,Watchful Shield,candidate,https://sharksnack.github.io/shiren-6/items/shields/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$21,Item_FancyShield,Text797,Text1392,Gilded Shield,見かけだおしの盾,,review,,Japanese name means deceptive appearance; not Golden Shield.
+$22,Item_FragileShield,Text798,Text1393,Disposable Shield,使い捨ての盾,,review,,No defensible direct Shiren 6 target established in this audit.
+$23,Item_BlastShield,Text799,Text1394,Mine Nabari Shield,地雷ナバリの盾,Blast Shield,candidate,https://sharksnack.github.io/shiren-6/items/shields/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$24,Item_WalrusShield,Text800,Text1395,Todo Shield,トドの盾,Walrus Stopper,candidate,https://sharksnack.github.io/shiren-6/items/shields/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$25,Item_Stormward,Text801,Text1396,Rasen-Fuma Shield,ラセン風魔の盾,Rasen Fuuma,candidate,https://sharksnack.github.io/shiren-6/items/shields/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$26,Item_26,Text802,Text1397,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$27,Item_27,Text803,Text1398,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$28,Item_MedicinalHerb,Text804,Text1399,Medical Herb,薬草,Herb,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$29,Item_RestorativeHerb,Text805,Text1400,Otogiri-So,弟切草,Otogirisou,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$2A,Item_HappinessHerb,Text806,Text1401,Happy Herb,しあわせ草,Fortune Grass,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$2B,Item_SightHerb,Text807,Text1402,Vision Herb,めぐすり草,Seewell Grass,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$2C,Item_DragonHerb,Text808,Text1403,Dragon Herb,ドラゴン草,Dragon Grass,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$2D,Item_VictoryHerb,Text809,Text1404,Invincible Herb,無敵草,Invincible Grass,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$2E,Item_AngelSeed,Text810,Text1405,Angel Seed,天使の種,Angel Seed,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$2F,Item_RevivalHerb,Text811,Text1406,Revival Herb,復活の草,Revival Grass,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$30,Item_InvisibilityHerb,Text812,Text1407,Vanishing Herb,消え去り草,,review,,No direct target established.
+$31,Item_BitterHerb,Text813,Text1408,Wriggling Herb,くねくね草,Feeble Grass,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$32,Item_MisfortuneHerb,Text814,Text1409,Unlucky Seed,不幸の種,Unlucky Seed,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$33,Item_IllLuckHerb,Text815,Text1410,Super-Unlucky Seed,超不幸の種,Ill-fated Seed,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$34,Item_KignyHerb,Text816,Text1411,Kigni Tribe Seed,キグニ族の種,,review,,Kigni identity versus generic Berserk needs review.
+$35,Item_AmnesiaHerb,Text817,Text1412,Forgetful Herb,物忘れの草,,review,,No direct target established.
+$36,Item_36,Text818,Text1413,---,unused,,protected,,Preserve unused slot; no new item.
+$37,Item_LifeHerb,Text819,Text1414,Life Herb,命の草,Life Grass,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$38,Item_BigBellySeed,Text820,Text1415,Expansion Seed,胃拡張の種,Bellyexpand Seed,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$39,Item_LittleBellySeed,Text821,Text1416,Contraction Seed,胃縮小の種,Bellyshrink Seed,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$3A,Item_TalkSeed,Text822,Text1417,Speech Seed,話の種,,review,,SFC-specific effect/naming review.
+$3B,Item_StrengthHerb,Text823,Text1418,Power Herb,ちからの草,Strength Grass,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$3C,Item_AntidoteHerb,Text824,Text1419,Antidote Herb,どく消し草,Antidote Grass,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$3D,Item_PoisonHerb,Text825,Text1420,Poison Herb,どく草,Poison Grass,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$3E,Item_ConfusionHerb,Text826,Text1421,Confusion Herb,混乱草,Confusion Grass,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$3F,Item_SleepHerb,Text827,Text1422,Sleep Herb,睡眠草,Sedating Grass,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$40,Item_Weeds,Text828,Text1423,Weed,雑草,Weeds,candidate,https://sharksnack.github.io/shiren-6/items/grass/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$41,Item_41,Text829,Text1424,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$42,Item_42,Text830,Text1425,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$43,Item_43,Text831,Text1426,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$44,Item_44,Text832,Text1427,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$45,Item_45,Text833,Text1428,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$46,Item_46,Text834,Text1429,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$47,Item_47,Text835,Text1430,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$48,Item_48,Text836,Text1431,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$49,Item_49,Text837,Text1432,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$4A,Item_4A,Text838,Text1433,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$4B,Item_4B,Text839,Text1434,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$4C,Item_4C,Text840,Text1435,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$4D,Item_4D,Text841,Text1436,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$4E,Item_4E,Text842,Text1437,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$4F,Item_4F,Text843,Text1438,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$50,Item_50,Text844,Text1439,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$51,Item_51,Text845,Text1440,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$52,Item_52,Text846,Text1441,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$53,Item_53,Text847,Text1442,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$54,Item_54,Text848,Text1443,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$55,Item_55,Text849,Text1444,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$56,Item_BlessingScroll,Text850,Text1445,Purify Scroll,おはらいの巻物,Exorcism Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$57,Item_IdentityScroll,Text851,Text1446,Identify Scroll,識別の巻物,Identifier Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$58,Item_LightScroll,Text852,Text1447,Light Scroll,あかりの巻物,Mapping Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$59,Item_BigpotScroll,Text853,Text1448,Bigpot Scroll,壺増大の巻物,Pot-upsize Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$5A,Item_BlastwaveScroll,Text854,Text1449,Airslash Scroll,真空斬りの巻物,Windblade Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$5B,Item_SilenceScroll,Text855,Text1450,Lockjaw Scroll,くちなしの巻物,Muzzle Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$5C,Item_5C,Text856,Text1451,-- Scroll,dummy entry,,protected,,Preserve unused slot; no new item.
+$5D,Item_TrapScroll,Text857,Text1452,Trap Scroll,ワナの巻物,Trap Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$5E,Item_NeedScroll,Text858,Text1453,Crisis Scroll,困った時の巻物,Fixer Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$5F,Item_HasteScroll,Text859,Text1454,Fastfoe Scroll,敵倍速の巻物,Swift Foe Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$60,Item_SleepScroll,Text860,Text1455,Slumber Scroll,バクスイの巻物,Slumber Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$61,Item_PowerupScroll,Text861,Text1456,Powerup Scroll,パワーアップの巻物,,review,,Do not replace with Power-up Grass; item category/effect differ.
+$62,Item_62,Text862,Text1457,-- Scroll,dummy entry,,protected,,Dummy in constants but Massacre is accepted; preserve hidden effect.
+$63,Item_ExplosionScroll,Text863,Text1458,Detonate Scroll,自爆の巻物,,review,,Do not equate with Windblade merely because both describe a shockwave.
+$64,Item_GreatHallScroll,Text864,Text1459,Bigroom Scroll,大部屋の巻物,Wall-less Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$65,Item_MonsterHouseScroll,Text865,Text1460,Monster House Scroll,モンスターハウスの巻物,Monstercall Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$66,Item_ConfusionScroll,Text866,Text1461,Confuse Scroll,混乱の巻物,Confusion Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$67,Item_RemovalScroll,Text867,Text1462,Genocide Scroll,ジェノサイドの巻物,Eradication Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$68,Item_BlankScroll,Text868,Text1463,Blank Scroll,白紙の巻物,Blank Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,Self-spell placeholder must not become a new accepted effect.
+$69,Item_WanderingScroll,Text869,Text1464,Lost Scroll,迷子の巻物,Map-loss Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$6A,Item_AirBlessScroll,Text870,Text1465,Heaven Scroll,天の恵みの巻物,Heavenly Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$6B,Item_EarthBlessScroll,Text871,Text1466,Earth Scroll,地の恵みの巻物,Earthly Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$6C,Item_PlatingScroll,Text872,Text1467,Chrome Scroll,メッキの巻物,Plating Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$6D,Item_ExtractionScroll,Text873,Text1468,Withdraw Scroll,吸い出しの巻物,Extraction Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$6E,Item_HandsFullScroll,Text874,Text1469,Slippery Scroll,拾えずの巻物,Carry-ban Scroll,candidate,https://sharksnack.github.io/shiren-6/items/scrolls/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$6F,Item_6F,Text875,Text1470,-- Scroll,dummy entry,,protected,,Placeholder has development description and special alias dispatch.
+$70,Item_70,Text876,Text1471,New Item,unused slot,,protected,,Normal slot unused; Haven resolver result is also $70. See blank-scrolls.md.
+$71,Item_71,Text877,Text1472,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$72,Item_72,Text878,Text1473,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$73,Item_73,Text879,Text1474,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$74,Item_74,Text880,Text1475,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$75,Item_75,Text881,Text1476,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$76,Item_76,Text882,Text1477,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$77,Item_77,Text883,Text1478,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$78,Item_78,Text884,Text1479,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$79,Item_79,Text885,Text1480,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$7A,Item_7A,Text886,Text1481,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$7B,Item_7B,Text887,Text1482,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$7C,Item_SlothStaff,Text888,Text1483,Sealing Staff,封印の杖,Sealing Staff,candidate,https://sharksnack.github.io/shiren-6/items/staves/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$7D,Item_KnockbackStaff,Text889,Text1484,Blowback Staff,ふきとばしの杖,Knockback Staff,candidate,https://sharksnack.github.io/shiren-6/items/staves/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$7E,Item_HappinessStaff,Text890,Text1485,Happy Staff,しあわせの杖,Fortune Staff,candidate,https://sharksnack.github.io/shiren-6/items/staves/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$7F,Item_MisfortuneStaff,Text891,Text1486,Unlucky Staff,不幸の杖,Unlucky Staff,candidate,https://sharksnack.github.io/shiren-6/items/staves/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$80,Item_DoppelgangerStaff,Text892,Text1487,Decoy Staff,身がわりの杖,Disguising Staff,candidate,https://sharksnack.github.io/shiren-6/items/staves/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$81,Item_SwitchingStaff,Text893,Text1488,Swap Staff,場所替えの杖,Switching Staff,candidate,https://sharksnack.github.io/shiren-6/items/staves/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$82,Item_BufusStaff,Text894,Text1489,Bufoo's Staff,ブフーの杖,,review,,Meat-system item; do not substitute Peach Staff.
+$83,Item_SkullStaff,Text895,Text1490,Skeleton Mage Staff,ガイコツまどうの杖,Skull Mage's Staff,candidate,https://sharksnack.github.io/shiren-6/items/staves/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$84,Item_ParalysisStaff,Text896,Text1491,Paralysis Staff,かなしばりの杖,Paralyzing Staff,candidate,https://sharksnack.github.io/shiren-6/items/staves/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$85,Item_PostponeStaff,Text897,Text1492,Buy-Time Staff,一時しのぎの杖,Narrow-escape Staff,candidate,https://sharksnack.github.io/shiren-6/items/staves/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$86,Item_PainSplitStaff,Text898,Text1493,Paindividing Staff,痛み分けの杖,Empathetic Staff,candidate,https://sharksnack.github.io/shiren-6/items/staves/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$87,Item_87,Text899,Text1494,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$88,Item_88,Text900,Text1495,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$89,Item_89,Text901,Text1496,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$8A,Item_8A,Text902,Text1497,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$8B,Item_8B,Text903,Text1498,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$8C,Item_8C,Text904,Text1499,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$8D,Item_8D,Text905,Text1500,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$8E,Item_8E,Text906,Text1501,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$8F,Item_8F,Text907,Text1502,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$90,Item_90,Text908,Text1503,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$91,Item_91,Text909,Text1504,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$92,Item_92,Text910,Text1505,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$93,Item_PassageArmband,Text911,Text1506,Passage Bracer,通過の腕輪,,review,,Passage effect needs identity review; not Passage-find based on wording.
+$94,Item_DiscountArmband,Text912,Text1507,Bargain Bracer,値切の腕輪,Haggling Bracelet,candidate,https://sharksnack.github.io/shiren-6/items/bracelets/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$95,Item_TrapArmband,Text913,Text1508,Trapper bracer,ワナ師の腕輪,Trapper's Bracelet,candidate,https://sharksnack.github.io/shiren-6/items/bracelets/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$96,Item_Levelholder,Text914,Text1509,Levelholder Bracer,レベル固定の腕輪,,review,,No direct target established.
+$97,Item_RecoveryArmband,Text915,Text1510,Healing Bracer,回復の腕輪,Healing Bracelet,candidate,https://sharksnack.github.io/shiren-6/items/bracelets/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$98,Item_RustlessArmband,Text916,Text1511,Rustproof Bracer,錆よけの腕輪,Rustproof Bracelet,candidate,https://sharksnack.github.io/shiren-6/items/bracelets/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$99,Item_CriticalArmband,Text917,Text1512,Critical Bracer,会心の腕輪,,review,,Do not equate with Daredevil without checking who gains critical hits.
+$9A,Item_RegretArmband,Text918,Text1513,Pain Bracer,痛恨の腕輪,Dreaded Bracelet,candidate,https://sharksnack.github.io/shiren-6/items/bracelets/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$9B,Item_BlessingArmband,Text919,Text1514,Blessing Bracer,呪いよけの腕輪,Cursebreak Bracelet,candidate,https://sharksnack.github.io/shiren-6/items/bracelets/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$9C,Item_PitchersArmband,Text920,Text1515,Penetration Bracer,遠投の腕輪,Far-throwing Bracelet,candidate,https://sharksnack.github.io/shiren-6/items/bracelets/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$9D,Item_HappyArmband,Text921,Text1516,Happy Bracer,しあわせの腕輪,Fortune Bracelet,candidate,https://sharksnack.github.io/shiren-6/items/bracelets/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$9E,Item_LossArmband,Text922,Text1517,Clumsiness Bracer,垂れ流しの腕輪,Item-losing Bracelet,candidate,https://sharksnack.github.io/shiren-6/items/bracelets/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$9F,Item_SightArmband,Text923,Text1518,Far-sight Bracer,透視の腕輪,Clairvoyant Bracelet,candidate,https://sharksnack.github.io/shiren-6/items/bracelets/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$A0,Item_CalmArmband,Text924,Text1519,Clear Mind Bracer,混乱よけの腕輪,Focusing Bracelet,candidate,https://sharksnack.github.io/shiren-6/items/bracelets/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$A1,Item_IdentityArmband,Text925,Text1520,ID Bracer,識別の腕輪,Appraiser's Bracelet,candidate,https://sharksnack.github.io/shiren-6/items/bracelets/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$A2,Item_A2,Text926,Text1521,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$A3,Item_A3,Text927,Text1522,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$A4,Item_A4,Text928,Text1523,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$A5,Item_A5,Text929,Text1524,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$A6,Item_A6,Text930,Text1525,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$A7,Item_A7,Text931,Text1526,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$A8,Item_A8,Text932,Text1527,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$A9,Item_A9,Text933,Text1528,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$AA,Item_AA,Text934,Text1529,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$AB,Item_AB,Text935,Text1530,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$AC,Item_AC,Text936,Text1531,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$AD,Item_AD,Text937,Text1532,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$AE,Item_Onigiri,Text938,Text1533,Rice Ball,おにぎり,Onigiri,candidate,https://sharksnack.github.io/shiren-6/items/food/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$AF,Item_BigOnigiri,Text939,Text1534,Big Rice Ball,大きいおにぎり,Large Onigiri,candidate,https://sharksnack.github.io/shiren-6/items/food/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$B0,Item_SpoiledOnigiri,Text940,Text1535,Rotten Rice Ball,くさったおにぎり,Rotten Onigiri,candidate,https://sharksnack.github.io/shiren-6/items/food/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$B1,Item_HugeOnigiri,Text941,Text1536,Huge Rice Ball,巨大なおにぎり,Huge Onigiri,candidate,https://sharksnack.github.io/shiren-6/items/food/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$B2,Item_SpecialOnigiri,Text942,Text1537,Special Rice Ball,特製おにぎり,Special Onigiri,candidate,https://sharksnack.github.io/shiren-6/items/food/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$B3,Item_B3,Text943,Text1538,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$B4,Item_HoldingJar,Text944,Text1539,Holding Pot,保存の壺,Preservation Pot,candidate,https://sharksnack.github.io/shiren-6/items/pots/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$B5,Item_HidingJar,Text945,Text1540,Hiding Pot,やりすごしの壺,Hiding Pot,candidate,https://sharksnack.github.io/shiren-6/items/pots/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$B6,Item_DivisionJar,Text946,Text1541,Dividing Pot,分裂の壺,,review,,No direct target established; preserve duplication behavior.
+$B7,Item_StrengtheningJar,Text947,Text1542,Strengthening Pot,強化の壺,Upgrading Pot,candidate,https://sharksnack.github.io/shiren-6/items/pots/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$B8,Item_IdentityJar,Text948,Text1543,ID Pot,識別の壺,Identifier Pot,candidate,https://sharksnack.github.io/shiren-6/items/pots/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$B9,Item_ChiropracticJar,Text949,Text1544,Back Pot,,,review,,Review Japanese identity and SFC healing effect before choosing a modern pot name.
+$BA,Item_StorehouseJar,Text950,Text1545,Storage Pot,倉庫の壺,Warehouse Pot,candidate,https://sharksnack.github.io/shiren-6/items/pots/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$BB,Item_WeakeningJar,Text951,Text1546,Weakening Pot,弱化の壺,Degrading Pot,candidate,https://sharksnack.github.io/shiren-6/items/pots/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$BC,Item_BC,Text952,Text1547,---,dummy entry,,protected,,Preserve unused slot; no new item.
+$BD,Item_BottomlessJar,Text953,Text1548,Bottomless Pot,底抜けの壺,Bottomless Pot,candidate,https://sharksnack.github.io/shiren-6/items/pots/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$BE,Item_MonsterJar,Text954,Text1549,Monster Pot,魔物のるつぼ,,review,,No direct target established.
+$BF,Item_ChangeJar,Text955,Text1550,Transform Pot,変化の壺,Transmutation Pot,candidate,https://sharksnack.github.io/shiren-6/items/pots/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$C0,Item_MeldingJar,Text956,Text1551,Fusion Pot,合成の壺,Synthesis Pot,candidate,https://sharksnack.github.io/shiren-6/items/pots/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$C1,Item_WalrusJar,Text957,Text1552,Todo Pot,トドの壺,Walrus Pot,candidate,https://sharksnack.github.io/shiren-6/items/pots/,"Verify Japanese identity, official English spelling, SFC effect, and UI width."
+$C2,Item_GaibarasJar,Text958,Text1553,Gaibara Pot,ガイバラの壺,,review,,Gaibara story pottery; preserve narrative identity.
+$C3,Item_PointlessJar,Text959,Text1554,Stupid-looking Pot,アホくさい壺,,review,,Gaibara story pottery; preserve narrative identity.
+$C4,Item_UnbreakableJar,Text960,Text1555,Unbreakable Pot,割れない壺,Unbreakable Pot,candidate,https://sharksnack.github.io/shiren-6/items/pots/,Verify story role despite identical target name.
+$C5,Item_VentingJar,Text961,Text1556,Stress Relieving Pot,うっぷんばらしの壺,,review,,SFC-specific pottery/effect review.
+$C6,Item_C6,Text962,Text1557,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$C7,Item_C7,Text963,Text1558,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$C8,Item_C8,Text964,Text1559,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$C9,Item_C9,Text965,Text1560,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$CA,Item_CA,Text966,Text1561,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$CB,Item_CB,Text967,Text1562,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$CC,Item_CC,Text968,Text1563,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$CD,Item_CD,Text969,Text1564,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$CE,Item_CE,Text970,Text1565,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$CF,Item_CF,Text971,Text1566,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$D0,Item_D0,Text972,Text1567,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$D1,Item_D1,Text973,Text1568,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$D2,Item_D2,Text974,Text1569,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$D3,Item_D3,Text975,Text1570,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$D4,Item_D4,Text976,Text1571,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$D5,Item_D5,Text977,Text1572,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$D6,Item_D6,Text978,Text1573,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$D7,Item_D7,Text979,Text1574,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$D8,Item_D8,Text980,Text1575,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$D9,Item_D9,Text981,Text1576,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$DA,Item_DA,Text982,Text1577,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$DB,Item_DB,Text983,Text1578,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$DC,Item_DC,Text984,Text1579,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$DD,Item_DD,Text985,Text1580,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$DE,Item_DE,Text986,Text1581,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$DF,Item_DF,Text987,Text1582,New Item,unused slot,,protected,,Preserve unused slot; no new item.
+$E0,Item_MonsterMeat,Text988,Text1583,Monster Meat,モンスターの肉,,review,,Keep monster meat; do not substitute Peach Bun. Dynamic monster-name composition also needs review.
+$E1,Item_GoldenFeather,Text989,Text1584,Golden Feather,黄金の羽根,,review,,Story objective; inspect effect/description instead of importing a modern object.
+$E2,Item_HappinessBox,Text990,Text1585,Happy Box,しあわせの箱 torneko moment,,review,,Story objective; no direct Shiren 6 target established.
+$E3,Item_StrangeBox,Text991,Text1586,Strange Box,奇妙な箱,,review,,Story objective; no direct Shiren 6 target established.
+$E4,Item_E4,Text992,Text1587,New Item Target,新規アイテム目的物,,protected,,Special target placeholder; preserve.
+$E5,Item_Gitan,Text993,Text1588, Gitan,ギタン,,protected,,Preserve leading space and numeric composition.
+$E6,Item_Null,Text994,Text1589,          ,,,protected,,Null slot; preserve spaces and terminator.
+$E7,Item_Nduba,Text995,,Nduba,ンドゥバ,,review,,Coordinate with enemy glossary; no separate ordinary description in current sequence.
