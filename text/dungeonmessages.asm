@@ -170,7 +170,7 @@ textfunction $5
 textfunction $2
 cmdf6
 strvar $80
-text " changed\linto a Big Rice Ball."
+text " changed\linto a Big Rice Ball.\l"
 endtext
 
 ;fe14bd
@@ -271,7 +271,7 @@ endtext
 ;fe15d5
 Text34:
 strvar $86
-text "'s legs are\ltrapped and cannot move!"
+text "'s legs are\ltrapped and cannot move!\l"
 endtext
 
 ;fe15fc
@@ -596,7 +596,7 @@ endtext
 Text80:
 text "Your satiation level\lbecame "
 numvar $10
-text "%."
+text "%.\l"
 endtext
 
 ;fe1b1b
@@ -699,7 +699,7 @@ endtext
 
 ;fe1d5d
 Text97:
-text "You'll be able to see the\llayout of the dungeon."
+text "You'll be able to see the\llayout of the dungeon.\l"
 endtext
 
 ;fe1d8e
@@ -881,7 +881,7 @@ endtext
 
 ;fe212c
 Text126:
-text "you can transform monsters\linto something else."
+text "you can transform monsters\linto something else.\l"
 endtext
 
 ;fe215c
@@ -906,7 +906,7 @@ endtext
 
 ;fe21b9
 Text130:
-text "You can't see so you can't\lread it."
+text "You can't see so you can't\lread it.\l"
 endtext
 
 ;fe21dd
@@ -928,7 +928,7 @@ endtext
 Text134:
 text "Your max HP dropped by "
 numvar $10
-text " points."
+text " points.\l"
 endtext
 
 ;fe224a
@@ -1008,7 +1008,7 @@ endtext
 
 ;fe23f9
 Text146:
-text "the weapon you are equipping\lwill become more powerful."
+text "the weapon you are equipping\lwill become more powerful.\l"
 endtext
 
 ;fe2431
@@ -1249,17 +1249,17 @@ endtext
 
 ;fe2965
 Text184:
-text "Oh! The staircase\lwas a monster!"
+text "Oh! The staircase\lwas a monster!\l"
 endtext
 
 ;fe2986
 Text185:
-text "But you can't see\lanything right now."
+text "But you can't see\lanything right now.\l"
 endtext
 
 ;fe29ac
 Text186:
-text "You can attack enemies from\lfar away with this.\lIf you equip it beforehand,\lyou can fire it with\lthe L button."
+text "You can attack enemies from\lfar away with this.\lIf you equip it beforehand,\lyou can fire it with\lthe L button.\l"
 endtext
 
 ;fe2a1b

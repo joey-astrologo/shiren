@@ -5767,14 +5767,14 @@ cmdf6
 playsound 143
 text " "
 strvar $86
-text " cast a\lpurification spell."
+text " cast a\lpurification spell.\l"
 endtext
 
 ;ffe904
 Text2308:
 cmdf6
 playsound 115
-text " All your bracers were identified."
+text " All your bracers were identified.\l"
 endtext
 
 ;ffe92a

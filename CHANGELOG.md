@@ -41,6 +41,13 @@ of the Aeon Genesis translation.
   thrown item or dodged arrow lands on the floor (now shows the item
   name, e.g. "Wood Arrow dropped."), plus the chrome-coating, insomnia,
   staff-binding, monster-in-disguise, and dance messages, among others.
+- **Fixed the Decrepit Old Man's curse-removal messages.** "...cast a
+  purification spell." lost its second line, and the next message
+  ("The curse on the [item]..." or "But nothing happened.") started
+  mid-box and wrapped item names mid-word. Same dropped trailing
+  line-break as above; also restored on twelve more messages including
+  the bear-trap, staircase-monster, max-HP-drop, satiation, and
+  bracer-identified messages.
 - **Fixed the "item stolen" message sequence** — corrected message flow
   and line printing when a monster steals an item.
 - **Fixed overlapping seal descriptions in the item detail popup.** On
